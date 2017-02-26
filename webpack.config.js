@@ -11,11 +11,21 @@ var config = {
     filename: "app.js"
   },
   module: {
-    loaders: [{
-        include: DEV,
-        loader: "babel-loader",
-    }]
-  }
+      loaders: [
+         {
+            test: /\.jsx?$/,
+            exclude: /node_modules/,
+            loader: 'babel-loader',
+            query: {
+               presets: ['es2015', 'react', 'stage-2']
+            }
+         },
+         {
+	          test: /\.css$/,
+	          loader: "style-loader!css-loader"
+         }
+      ]
+   }
 };
 
 module.exports = config;
