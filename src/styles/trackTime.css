@@ -1,6 +1,7 @@
 .trackTime {
   width: 100vw;
   height: 5px;
+  margin-bottom: 3vh;
 }
 
 #trackTimeBg {

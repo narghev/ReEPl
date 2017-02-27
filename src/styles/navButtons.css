@@ -1,4 +1,6 @@
 .navButtons {
-  width: 100px;
-  height: 100px;
+  width: 8vh;
+  height: 8vh;
+  margin-left: 12vw;
+  margin-right: 12vw;
 }

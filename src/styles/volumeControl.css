@@ -33,4 +33,5 @@
 .volumeControl {
   display: flex;
   flex-direction: row;
+  margin-bottom: 5vh;
 }
