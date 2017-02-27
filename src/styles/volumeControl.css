@@ -1,0 +1,36 @@
+input[type=range]{
+    -webkit-appearance: none;
+    width: 40vw;
+    border-radius: 100px;
+    margin: auto;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    height: 2px;
+    background: #c6c6c6;
+    border: none;
+    border-radius: 100px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 11px;
+    width: 11px;
+    border-radius: 50%;
+    background: #b0b0b0;
+    margin-top: -4px;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #ccc;
+}
+
+.volumeControl {
+  display: flex;
+  flex-direction: row;
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import PlayPauseButton from './front/playPauseButton.jsx';
 import PrevButton from './front/prevButton.jsx';
 import NextButton from './front/nextButton.jsx';
+import VolumeControl from './front/volumeControl.jsx';
 
 export default
 class FrontComps extends React.Component {
@@ -13,6 +14,7 @@ class FrontComps extends React.Component {
           <PlayPauseButton />
           <NextButton />
         </div>
+        <VolumeControl />
       </div>
     )
   }
