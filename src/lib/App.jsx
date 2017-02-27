@@ -6,6 +6,7 @@ import '../styles/frontComps.css';
 import '../styles/navButtons.css';
 import '../styles/playPauseButton.css';
 import '../styles/volumeControl.css';
+import '../styles/trackTime.css';
 
 import FrontComps from './components/frontComps.jsx';
 

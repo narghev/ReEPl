@@ -12,7 +12,7 @@ class VolumeControl extends React.Component {
   render(){
     return(
       <div className="volumeControl">
-        <input onChange={this.changeHandler} value={this.val} type="range" min="0" max="100" />
+        <input onChange={this.changeHandler} defaultValue="75" type="range" min="0" max="100" />
       </div>
     )
   }

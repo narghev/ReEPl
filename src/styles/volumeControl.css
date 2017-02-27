@@ -1,18 +1,18 @@
-input[type=range]{
+.volumeControl input[type=range]{
     -webkit-appearance: none;
     width: 40vw;
     border-radius: 100px;
     margin: auto;
 }
 
-input[type=range]::-webkit-slider-runnable-track {
+.volumeControl input[type=range]::-webkit-slider-runnable-track {
     height: 2px;
     background: #c6c6c6;
     border: none;
     border-radius: 100px;
 }
 
-input[type=range]::-webkit-slider-thumb {
+.volumeControl input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
     border: none;
     height: 11px;
@@ -22,11 +22,11 @@ input[type=range]::-webkit-slider-thumb {
     margin-top: -4px;
 }
 
-input[type=range]:focus {
+.volumeControl input[type=range]:focus {
     outline: none;
 }
 
-input[type=range]:focus::-webkit-slider-runnable-track {
+.volumeControl input[type=range]:focus::-webkit-slider-runnable-track {
     background: #ccc;
 }
 
