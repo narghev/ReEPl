@@ -4,15 +4,21 @@ export default
 class TrackTime extends React.Component {
   constructor(props){
     super(props);
-    this.progress = 0
+    this.progress = 0;
+    this.duration = 0;
+  }
+  clickHandler = (event) => {
+    const track = document.getElementById('track');
+    track.currentTime = (this.duration)*(event.clientX/window.innerWidth);
   }
   componentWillReceiveProps(nextProps){
+    this.duration = nextProps.duration;
     this.progress = (nextProps.currentTime/nextProps.duration)*100;
     this.render();
   }
   render(){
     return(
-      <div className="trackTime">
+      <div className="trackTime" onClick={ this.clickHandler }>
         <div id="trackTimeBg">
           <div id="trackTimeProgress" style={{width: `${this.progress}%`}}></div>
         </div>

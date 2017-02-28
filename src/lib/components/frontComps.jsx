@@ -9,6 +9,7 @@ import DropOnMe from './front/dragDrop.jsx';
 import TrackName from './front/trackName.jsx';
 import TrackDuration from './front/trackDuration.jsx';
 import TrackCurrentTime from './front/trackCurrentTime.jsx';
+import BackGroundPic from './front/backgroundPic.jsx';
 
 export default
 class FrontComps extends React.Component {
@@ -30,6 +31,7 @@ class FrontComps extends React.Component {
         <Audio file={ this.state.files } trackTimePassFunc={(duration, currentTime)=>{
             this.setState({duration: duration, currentTime: currentTime});
           }}/>
+        <BackGroundPic />
         <TrackName name={ this.state.trackName } />
         <div className="trackTimeInfo">
           <TrackCurrentTime

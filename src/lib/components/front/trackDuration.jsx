@@ -3,7 +3,6 @@ import React from 'react';
 export default
 class TrackDuration extends React.Component {
   render(){
-    console.log(this.props.currentTime, this.props.duration)
     if (this.props.duration != 0){
       if ((this.props.currentTime/this.props.duration)*100 <= 90){
         return(

@@ -11,6 +11,7 @@ import '../styles/screen.css';
 import '../styles/dragOnMe.css';
 import '../styles/trackName.css';
 import '../styles/trackTimeInfo.css';
+import '../styles/backgroundPic.css';
 
 import FrontComps from './components/frontComps.jsx';
 
