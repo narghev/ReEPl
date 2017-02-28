@@ -24,6 +24,9 @@ class FrontComps extends React.Component {
     };
     this.playlist = {};
     this.nowPlaying = 0;
+    this.nextPlayingNow = (num, length) => {
+      return (num+3)%length;
+    }
     const onededEventInterval = setTimeout(()=>{
       const track = document.getElementById('track');
       if (track === null){
@@ -31,7 +34,8 @@ class FrontComps extends React.Component {
       }
       clearInterval(onededEventInterval);
       track.onended = () => {
-        this.setState({nowPlaying: this.state.nowPlaying+1, trackName: this.state.files[this.state.nowPlaying+1].name});
+        this.setState({nowPlaying: this.nextPlayingNow(this.state.nowPlaying, this.playlist.length)+1,
+          trackName: this.state.files[this.nextPlayingNow(this.state.nowPlaying, this.playlist.length)+1].name});
       }
     },500);
   }
@@ -55,11 +59,21 @@ class FrontComps extends React.Component {
         </div>
         <TrackTime duration={ this.state.duration } currentTime={ this.state.currentTime }/>
         <div className='buttons'>
-          <PrevButton />
+          <PrevButton clickHandler= {
+              () => {
+                this.setState({nowPlaying: this.nextPlayingNow(this.state.nowPlaying-1, this.playlist.length),
+                  trackName: this.state.files[this.nextPlayingNow(this.state.nowPlaying-1, this.playlist.length)].name});
+              }
+            }/>
           <PlayPauseButton playing={ this.state.playing } playingPassFunc={(playing)=>{
               this.setState({playing: playing});
             }}/>
-          <NextButton />
+          <NextButton clickHandler= {
+              () => {
+                this.setState({nowPlaying: this.nextPlayingNow(this.state.nowPlaying+1, this.playlist.length),
+                  trackName: this.state.files[this.nextPlayingNow(this.state.nowPlaying+1, this.playlist.length)].name});
+              }
+            }/>
         </div>
         <VolumeControl />
       </div>
