@@ -1,0 +1,11 @@
+.trackName {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 3vh;
+}
+
+.trackName p {
+  color: #C6C6C6;
+  font-size: 30px;
+}

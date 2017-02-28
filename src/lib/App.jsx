@@ -9,6 +9,7 @@ import '../styles/volumeControl.css';
 import '../styles/trackTime.css';
 import '../styles/screen.css';
 import '../styles/dragOnMe.css';
+import '../styles/trackName.css';
 
 import FrontComps from './components/frontComps.jsx';
 
