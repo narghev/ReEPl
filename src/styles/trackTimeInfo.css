@@ -1,0 +1,10 @@
+.trackTimeInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.trackTimeInfo p {
+  color: #C6C6C6;
+  font-size: 1.5vw;
+}

@@ -7,6 +7,8 @@ import TrackTime from './front/trackTime.jsx';
 import Audio from './audio.jsx';
 import DropOnMe from './front/dragDrop.jsx';
 import TrackName from './front/trackName.jsx';
+import TrackDuration from './front/trackDuration.jsx';
+import TrackCurrentTime from './front/trackCurrentTime.jsx';
 
 export default
 class FrontComps extends React.Component {
@@ -29,6 +31,12 @@ class FrontComps extends React.Component {
             this.setState({duration: duration, currentTime: currentTime});
           }}/>
         <TrackName name={ this.state.trackName } />
+        <div className="trackTimeInfo">
+          <TrackCurrentTime
+            duration={ this.state.duration === 0 ? 1 : this.state.duration }
+            currentTime={ this.state.currentTime === 0 ? "" : (this.state.currentTime) }/>
+          <TrackDuration duration={ this.state.duration }/>
+        </div>
         <TrackTime duration={ this.state.duration } currentTime={ this.state.currentTime }/>
         <div className='buttons'>
           <PrevButton />
