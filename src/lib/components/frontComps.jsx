@@ -35,7 +35,7 @@ class FrontComps extends React.Component {
           <TrackCurrentTime
             duration={ this.state.duration === 0 ? 1 : this.state.duration }
             currentTime={ this.state.currentTime === 0 ? "" : (this.state.currentTime) }/>
-          <TrackDuration duration={ this.state.duration }/>
+          <TrackDuration duration={ this.state.duration } currentTime={ this.state.currentTime }/>
         </div>
         <TrackTime duration={ this.state.duration } currentTime={ this.state.currentTime }/>
         <div className='buttons'>

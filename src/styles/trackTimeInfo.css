@@ -7,4 +7,5 @@
 .trackTimeInfo p {
   color: #C6C6C6;
   font-size: 1.5vw;
+  display: inline-block;
 }
