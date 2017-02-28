@@ -11,19 +11,27 @@ export default
 class FrontComps extends React.Component {
   constructor(){
     super();
-    this.state = {files: null};
+    this.state = {files: null,
+      playing: false,
+      duration: 0,
+      currentTime: 0
+    };
   }
   render(){
     return(
       <div className="screen">
         <DropOnMe filePassFunc={(file)=>{
-          this.setState({files: file});
+          this.setState({files: file, playing: true});
         }}/>
-        <Audio file={ this.state.files }/>
-        <TrackTime />
+      <Audio file={ this.state.files } trackTimePassFunc={(duration, currentTime)=>{
+            this.setState({duration: duration, currentTime: currentTime});
+          }}/>
+        <TrackTime duration={ this.state.duration } currentTime={ this.state.currentTime }/>
         <div className='buttons'>
           <PrevButton />
-          <PlayPauseButton />
+          <PlayPauseButton playing={ this.state.playing } playingPassFunc={(playing)=>{
+              this.setState({playing: playing});
+            }}/>
           <NextButton />
         </div>
         <VolumeControl />

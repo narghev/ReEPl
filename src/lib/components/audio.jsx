@@ -7,13 +7,24 @@ class Audio extends React.Component {
     this.state = {
       url: null,
     }
+    this.updateTrackTime;
   }
   componentWillReceiveProps(nextProps){
     this.setState({url: nextProps.file[0].path});
   }
   componentDidUpdate(){
-    document.getElementById("track").load();
-    document.getElementById("track").play();
+    clearInterval(this.updateTrackTime);
+    const track = document.getElementById("track");
+    this.updateTrackTime = setInterval(()=>{
+      this.props.trackTimePassFunc(track.duration, track.currentTime);
+    },500);
+    track.load();
+    track.play();
+  }
+  shouldComponentUpdate(nextProps, nextState){
+    if (this.state.url === nextProps.file[0].path)
+      return false;
+    return true;
   }
   render(){
     return(
