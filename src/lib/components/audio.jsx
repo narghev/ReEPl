@@ -10,7 +10,7 @@ class Audio extends React.Component {
     this.updateTrackTime;
   }
   componentWillReceiveProps(nextProps){
-    this.setState({url: nextProps.file[0].path});
+    this.setState({url: nextProps.file[nextProps.nowPlaying].path});
   }
   componentDidUpdate(){
     clearInterval(this.updateTrackTime);
@@ -22,7 +22,7 @@ class Audio extends React.Component {
     track.play();
   }
   shouldComponentUpdate(nextProps, nextState){
-    if (this.state.url === nextProps.file[0].path)
+    if (this.state.url === nextProps.file[nextProps.nowPlaying].path)
       return false;
     return true;
   }

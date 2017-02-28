@@ -19,16 +19,30 @@ class FrontComps extends React.Component {
       playing: false,
       duration: 0,
       currentTime: 0,
-      trackName: ""
+      trackName: "",
+      nowPlaying: 0
     };
+    this.playlist = {};
+    this.nowPlaying = 0;
+    const onededEventInterval = setTimeout(()=>{
+      const track = document.getElementById('track');
+      if (track === null){
+        return;
+      }
+      clearInterval(onededEventInterval);
+      track.onended = () => {
+        this.setState({nowPlaying: this.state.nowPlaying+1, trackName: this.state.files[this.state.nowPlaying+1].name});
+      }
+    },500);
   }
   render(){
     return(
       <div className="screen">
-        <DropOnMe filePassFunc={(file)=>{
-            this.setState({files: file, playing: true, trackName: file[0].name});
+        <DropOnMe filePassFunc={(playlist)=>{
+            this.playlist = playlist;
+            this.setState({files: playlist, playing: true, trackName: playlist[this.state.nowPlaying].name});
           }}/>
-        <Audio file={ this.state.files } trackTimePassFunc={(duration, currentTime)=>{
+        <Audio file={ this.state.files } nowPlaying={ this.state.nowPlaying } trackTimePassFunc={(duration, currentTime)=>{
             this.setState({duration: duration, currentTime: currentTime});
           }}/>
         <BackGroundPic />

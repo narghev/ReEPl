@@ -3,6 +3,7 @@
   flex-direction: row;
   justify-content: center;
   margin-bottom: 2vh;
+  height: 5vh;
 }
 
 .trackName p {

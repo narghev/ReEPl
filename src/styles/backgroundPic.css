@@ -1,3 +1,11 @@
 .backgroundPic img {
-  width: 100vw;
+  width: 70vw;
+  height: 65vh;
+  margin: auto;
+  margin-bottom: -6vh;
+}
+
+.backgroundPic {
+  display: flex;
+  flex-direction: row;
 }
