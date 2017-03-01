@@ -15,6 +15,7 @@ import '../styles/backgroundPic.css';
 import '../styles/addFiles.css';
 import '../styles/playlistButton.css';
 import '../styles/topButtons.css';
+import '../styles/playlistScreen.css';
 
 import FrontComps from './components/frontComps.jsx';
 

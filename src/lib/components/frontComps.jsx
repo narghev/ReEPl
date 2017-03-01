@@ -12,6 +12,7 @@ import TrackCurrentTime from './front/trackCurrentTime.jsx';
 import BackGroundPic from './front/backgroundPic.jsx';
 import AddFiles from './front/addFiles.jsx';
 import PlaylistButton from './front/playlistButton.jsx';
+import Playlist from './playlist/playlist.jsx';
 
 export default
 class FrontComps extends React.Component {
@@ -22,7 +23,8 @@ class FrontComps extends React.Component {
       duration: 0,
       currentTime: 0,
       trackName: "",
-      nowPlaying: 0
+      nowPlaying: 0,
+      showPlaylist: false
     };
     this.playlist = {};
     this.nowPlaying = 0;
@@ -52,8 +54,11 @@ class FrontComps extends React.Component {
         <Audio file={ this.state.files } nowPlaying={ this.state.nowPlaying } trackTimePassFunc={(duration, currentTime)=>{
             this.setState({duration: duration, currentTime: currentTime});
           }}/>
+        <Playlist show={ this.state.showPlaylist } />
         <div className="topButtons">
-          <PlaylistButton />
+          <PlaylistButton clickHandler={()=>{
+              this.setState({showPlaylist: true});
+            }}/>
           <div className="addFilesDiv">
             <AddFiles filePassFunc={(playlist)=>{
                 this.playlist = playlist;

@@ -5,12 +5,13 @@ class Audio extends React.Component {
   constructor(){
     super();
     this.state = {
-      url: null,
+      url: "",
     }
     this.updateTrackTime;
   }
   componentWillReceiveProps(nextProps){
-    this.setState({url: nextProps.file[nextProps.nowPlaying].path});
+    if (nextProps.file != null)
+      this.setState({url: nextProps.file[nextProps.nowPlaying].path});
   }
   componentDidUpdate(){
     clearInterval(this.updateTrackTime);
@@ -18,11 +19,13 @@ class Audio extends React.Component {
     this.updateTrackTime = setInterval(()=>{
       this.props.trackTimePassFunc(track.duration, track.currentTime);
     },500);
-    track.load();
-    track.play();
+    if (document.getElementById('track').children[0].attributes[0].value != ""){
+      track.load();
+      track.play();
+    }
   }
   shouldComponentUpdate(nextProps, nextState){
-    if (this.state.url === nextProps.file[nextProps.nowPlaying].path)
+    if (nextProps.file != null && this.state.url === nextProps.file[nextProps.nowPlaying].path)
       return false;
     return true;
   }

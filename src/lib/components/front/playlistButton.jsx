@@ -5,7 +5,7 @@ class PlaylistButton extends React.Component {
   render(){
     return(
       <div className="playlistButton">
-        <img src="images/playlist.png" />
+        <img src="images/playlist.png" onClick={ this.props.clickHandler }/>
       </div>
     )
   }
