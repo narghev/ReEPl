@@ -7,11 +7,14 @@
 }
 
 .addFilesDiv {
-  width:50px;
+  width: 4vw;
+  height: 5vh;
+  margin-top: 0.75vh;
+  margin-right: 0.5vw;
 }
 
 .addFiles + label img {
-  width: 50px;
-  height: 50px;
+  width: 4vw;
+  height: 5vh;
   z-index: 2;
 }
