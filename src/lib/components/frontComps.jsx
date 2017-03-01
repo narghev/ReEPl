@@ -54,10 +54,11 @@ class FrontComps extends React.Component {
         <Audio file={ this.state.files } nowPlaying={ this.state.nowPlaying } trackTimePassFunc={(duration, currentTime)=>{
             this.setState({duration: duration, currentTime: currentTime});
           }}/>
-        <Playlist show={ this.state.showPlaylist } />
+        <Playlist playlist={ this.playlist } show={ this.state.showPlaylist } />
         <div className="topButtons">
           <PlaylistButton clickHandler={()=>{
-              this.setState({showPlaylist: true});
+              const nextShowPlaylistVal = !this.state.showPlaylist;
+              this.setState({showPlaylist: nextShowPlaylistVal});
             }}/>
           <div className="addFilesDiv">
             <AddFiles filePassFunc={(playlist)=>{

@@ -1,0 +1,32 @@
+import React from 'react';
+
+export default
+class PlaylistContent extends React.Component {
+  constructor(){
+    super();
+    this.content = new Array();
+  }
+  render(){
+    this.content = [];
+    for (let i=0; i<this.props.playlist.length; i++){
+        this.content.push(
+          <div key={i} className="playlistContent" style={{
+              backgroundColor: (()=>{
+                if (i%2 === 0)
+                  return 'rgb(82, 82, 82)';
+                return '#191919';
+              })()
+            }}>
+            <p>{this.props.playlist[i].name.split('.')[0]}</p>
+          </div>
+        )
+    }
+    return(
+      <div>
+        {
+          this.content
+        }
+      </div>
+    )
+  }
+}

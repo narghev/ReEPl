@@ -1,4 +1,5 @@
 import React from 'react';
+import PlaylistContent from './playlistContent.jsx';
 
 export default
 class Playlist extends React.Component {
@@ -8,8 +9,17 @@ class Playlist extends React.Component {
   }
   render(){
     if (this.props.show){
-       return (<p>show</p>)
-     }
-    return (<p>dont show</p>)
+       return (
+         <div className="playlistScreen">
+           <p className="playlistText">Playlist</p>
+           <PlaylistContent playlist={ this.props.playlist }/>
+         </div>
+       )
+    }
+    return (
+      <div className="playlistHide">
+
+      </div>
+    )
   }
 }
