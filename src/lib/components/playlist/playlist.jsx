@@ -12,7 +12,9 @@ class Playlist extends React.Component {
        return (
          <div className="playlistScreen">
            <p className="playlistText">Playlist</p>
-           <PlaylistContent playlist={ this.props.playlist }/>
+           <PlaylistContent playlist={ this.props.playlist } clickHandler= { (i)=>{
+              this.props.clickHandler(i); 
+             }} />
          </div>
        )
     }

@@ -10,7 +10,11 @@ class PlaylistContent extends React.Component {
     this.content = [];
     for (let i=0; i<this.props.playlist.length; i++){
         this.content.push(
-          <div key={i} className="playlistContent" style={{
+          <div key={i} className="playlistContent"
+            onClick = { ()=> {
+              this.props.clickHandler(i);
+            }}
+            style={{
               backgroundColor: (()=>{
                 if (i%2 === 0)
                   return 'rgb(82, 82, 82)';
