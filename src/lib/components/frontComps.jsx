@@ -10,6 +10,8 @@ import TrackName from './front/trackName.jsx';
 import TrackDuration from './front/trackDuration.jsx';
 import TrackCurrentTime from './front/trackCurrentTime.jsx';
 import BackGroundPic from './front/backgroundPic.jsx';
+import AddFiles from './front/addFiles.jsx';
+import PlaylistButton from './front/playlistButton.jsx';
 
 export default
 class FrontComps extends React.Component {
@@ -44,11 +46,22 @@ class FrontComps extends React.Component {
       <div className="screen">
         <DropOnMe filePassFunc={(playlist)=>{
             this.playlist = playlist;
+            this.setState({nowPlaying: 0});
             this.setState({files: playlist, playing: true, trackName: playlist[this.state.nowPlaying].name});
           }}/>
         <Audio file={ this.state.files } nowPlaying={ this.state.nowPlaying } trackTimePassFunc={(duration, currentTime)=>{
             this.setState({duration: duration, currentTime: currentTime});
           }}/>
+        <div className="topButtons">
+          <PlaylistButton />
+          <div className="addFilesDiv">
+            <AddFiles filePassFunc={(playlist)=>{
+                this.playlist = playlist;
+                this.setState({nowPlaying: 0});
+                this.setState({files: playlist, playing: true, trackName: playlist[this.state.nowPlaying].name});
+              }}/>
+          </div>
+        </div>
         <BackGroundPic />
         <TrackName name={ this.state.trackName } />
         <div className="trackTimeInfo">

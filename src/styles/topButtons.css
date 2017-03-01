@@ -1,0 +1,10 @@
+.topButtons {
+  width: 100vw;
+  position: absolute;
+  display: flex;
+  top: 0px;
+  left: 0px;
+  flex-direction: row;
+  justify-content: space-between;
+  z-index: 2;
+}

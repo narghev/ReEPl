@@ -12,6 +12,9 @@ import '../styles/dragOnMe.css';
 import '../styles/trackName.css';
 import '../styles/trackTimeInfo.css';
 import '../styles/backgroundPic.css';
+import '../styles/addFiles.css';
+import '../styles/playlistButton.css';
+import '../styles/topButtons.css';
 
 import FrontComps from './components/frontComps.jsx';
 
