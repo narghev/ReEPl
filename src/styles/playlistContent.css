@@ -3,11 +3,19 @@
   font-size: 2.5vw;
   padding-left: 2vw;
   font-family: Arial, Helvetica, sans-serif;
+  margin-top: 0.5vh;
 }
 
 .playlistContent {
   height: 5vh;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;;
+}
+
+.playlistContent img {
+  width: 2.5vw;
+  height: 3vh;
+  margin-top: 0.75vh;
+  margin-right: 2vw;
 }

@@ -26,7 +26,7 @@ class FrontComps extends React.Component {
       nowPlaying: 0,
       showPlaylist: false
     };
-    this.playlist = {};
+    this.playlist = new Array();
     this.nowPlaying = 0;
     this.nextPlayingNow = (num, length) => {
       return (num+3)%length;
@@ -47,7 +47,8 @@ class FrontComps extends React.Component {
     return(
       <div className="screen">
         <DropOnMe filePassFunc={(playlist)=>{
-            this.playlist = playlist;
+            for (let i=0; i < playlist.length; i++)
+              this.playlist.push(playlist[i]);
             this.setState({nowPlaying: 0});
             this.setState({files: playlist, playing: true, trackName: playlist[this.state.nowPlaying].name});
           }}/>
@@ -57,7 +58,11 @@ class FrontComps extends React.Component {
         <Playlist playlist={ this.playlist } show={ this.state.showPlaylist } clickHandler={ (trackN)=>{
           this.setState({nowPlaying: trackN,
             trackName: this.state.files[trackN].name});
-          } }/>
+          } }
+            deleteClickHandler={ (trackN)=>{
+                this.playlist.splice(trackN, 1);
+              } }
+        />
         <div className="topButtons">
           <PlaylistButton clickHandler={()=>{
               const nextShowPlaylistVal = !this.state.showPlaylist;
@@ -65,7 +70,8 @@ class FrontComps extends React.Component {
             }}/>
           <div className="addFilesDiv">
             <AddFiles filePassFunc={(playlist)=>{
-                this.playlist = playlist;
+                for (let i=0; i < playlist.length; i++)
+                  this.playlist.push(playlist[i]);
                 this.setState({nowPlaying: 0});
                 this.setState({files: playlist, playing: true, trackName: playlist[this.state.nowPlaying].name});
               }}/>

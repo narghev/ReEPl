@@ -22,6 +22,9 @@ class PlaylistContent extends React.Component {
               })()
             }}>
             <p>{this.props.playlist[i].name.split('.')[0]}</p>
+            <img src="images/delete.png" onClick = { ()=> {
+              this.props.deleteClickHandler(i);
+            }}/>
           </div>
         )
     }
