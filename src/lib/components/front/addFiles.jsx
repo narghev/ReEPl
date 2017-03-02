@@ -8,7 +8,7 @@ class AddFiles extends React.Component {
   render(){
     return (
       <div>
-        <input type="file" accept=".mp3" className="addFiles" id="add" onChange={this.handleChange} multiple/>
+        <input type="file" accept=".mp3, .wav" className="addFiles" id="add" onChange={this.handleChange} multiple/>
         <label htmlFor="add"><img src="images/addFiles.png" /></label>
       </div>
     )

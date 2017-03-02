@@ -6,7 +6,7 @@ class DropOnMe extends React.Component {
   dropHandler = (files) => {
     const playlist = [];
     for (let i of files) {
-      if (i.name.split('.')[i.name.split('.').length-1] === 'mp3'){
+      if (i.name.split('.')[i.name.split('.').length-1] === 'mp3' || i.name.split('.')[i.name.split('.').length-1] === 'wav'){
         playlist.push({
           name: i.name,
           path: i.path
