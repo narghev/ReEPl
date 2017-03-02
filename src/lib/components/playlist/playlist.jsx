@@ -12,8 +12,8 @@ class Playlist extends React.Component {
        return (
          <div className="playlistScreen">
            <p className="playlistText">Playlist</p>
-           <PlaylistContent playlist={ this.props.playlist } clickHandler= { (i)=>{
-              this.props.clickHandler(i);
+           <PlaylistContent playlist={ this.props.playlist } clickHandler= { (i, bool)=>{
+              this.props.clickHandler(i, bool);
              }}
              deleteClickHandler= {
                (i)=>{

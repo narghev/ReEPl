@@ -5,6 +5,7 @@ class PlaylistContent extends React.Component {
   constructor(){
     super();
     this.content = new Array();
+    this.change = true;
   }
   render(){
     this.content = [];
@@ -12,7 +13,8 @@ class PlaylistContent extends React.Component {
         this.content.push(
           <div key={i} className="playlistContent"
             onClick = { ()=> {
-              this.props.clickHandler(i);
+              this.props.clickHandler(i, this.change);
+              this.change = true;
             }}
             style={{
               backgroundColor: (()=>{
@@ -23,6 +25,7 @@ class PlaylistContent extends React.Component {
             }}>
             <p>{this.props.playlist[i].name.split('.')[0]}</p>
             <img src="images/delete.png" onClick = { ()=> {
+              this.change = false;
               this.props.deleteClickHandler(i);
             }}/>
           </div>
