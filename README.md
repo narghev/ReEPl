@@ -7,6 +7,7 @@ ReEPl is a cross-platform, open-source, offline-music-player, ReactJS powered El
 
   - Clone the repo
   - In the terminal run
+
   ```
   $ npm install
   $ npm run build

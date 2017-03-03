@@ -11,7 +11,7 @@ let mainWindow;
 
 //function to create the broser window
 const createWindow = () => {
-    mainWindow = new BrowserWindow({width: 800, height: 600});
+    mainWindow = new BrowserWindow({width: 800, height: 600, resizable: false});
     mainWindow.loadURL(url.format({
       pathname: path.join(__dirname, 'src/index.html'),
       protocol: 'file:',
