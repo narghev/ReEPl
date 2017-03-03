@@ -18,15 +18,15 @@ export default
 class FrontComps extends React.Component {
   constructor(){
     super();
+    this.playlist = getPlaylist();
     this.state = {files: null,
       playing: false,
       duration: 0,
       currentTime: 0,
-      trackName: "",
+      trackName: this.playlist[0] ? this.playlist[0].name : "",
       nowPlaying: 0,
       showPlaylist: false
     };
-    this.playlist = new Array();
     this.nowPlaying = 0;
     this.nextPlayingNow = (num, length) => {
       return (num+length)%length;
@@ -49,6 +49,7 @@ class FrontComps extends React.Component {
         <DropOnMe filePassFunc={(playlist)=>{
           for (let i=0; i < playlist.length; i++)
             this.playlist.push(playlist[i]);
+          saveFile(this.playlist);
           this.setState({files: playlist, playing: true, trackName: this.playlist[this.state.nowPlaying].name});
           }}/>
         <Audio file={ this.playlist } nowPlaying={ this.state.nowPlaying } trackTimePassFunc={(duration, currentTime)=>{
@@ -66,6 +67,7 @@ class FrontComps extends React.Component {
               if (this.playlist.length === 1){
                 this.playlist = new Array();
                 this.nowPlaying = 0;
+                saveFile(this.playlist);
                 this.setState({files: null,
                   playing: false,
                   duration: 0,
@@ -78,14 +80,17 @@ class FrontComps extends React.Component {
               if (trackN === this.state.nowPlaying){
                 this.setState({trackName: this.playlist[this.state.nowPlaying+1].name});
                 this.playlist.splice(trackN, 1);
+                saveFile(this.playlist);
                 return;
               }
               else if (trackN < this.state.nowPlaying){
                 this.playlist.splice(trackN, 1);
+                saveFile(this.playlist);
                 this.setState({trackName: this.playlist[this.state.nowPlaying-1].name});
                 return;
               }
               this.playlist.splice(trackN, 1);
+              saveFile(this.playlist);
               }}
         />
         <div className="topButtons">
@@ -97,6 +102,7 @@ class FrontComps extends React.Component {
             <AddFiles filePassFunc={(playlist)=>{
                 for (let i=0; i < playlist.length; i++)
                   this.playlist.push(playlist[i]);
+                saveFile(this.playlist);
                 this.setState({files: playlist, playing: true, trackName: this.playlist[this.state.nowPlaying].name});
               }}/>
           </div>
