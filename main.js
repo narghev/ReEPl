@@ -4,6 +4,23 @@ const BrowserWindow = electron.BrowserWindow;
 
 const path = require('path');
 const url = require('url');
+const fs = require('fs');
+
+if (!fs.existsSync('userPlaylists')){
+  try {
+    fs.mkdirSync('./userPlaylists');
+  } catch(e) {
+    console.log(e);
+  }
+}
+
+if (!fs.existsSync('userPlaylists/playlist.json')){
+  try {
+    fs.closeSync(fs.openSync('userPlaylists/playlist.json', 'w'));
+  } catch(e) {
+    console.log(e);
+  }
+}
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
