@@ -20,7 +20,7 @@ class FrontComps extends React.Component {
     super();
     this.playlist = getPlaylist();
     this.state = {files: null,
-      playing: false,
+      playing: !!this.playlist[0],
       duration: 0,
       currentTime: 0,
       trackName: this.playlist[0] ? this.playlist[0].name : "",
@@ -52,9 +52,22 @@ class FrontComps extends React.Component {
           saveFile(this.playlist);
           this.setState({files: playlist, playing: true, trackName: this.playlist[this.state.nowPlaying].name});
           }}/>
-        <Audio file={ this.playlist } nowPlaying={ this.state.nowPlaying } trackTimePassFunc={(duration, currentTime)=>{
-            this.setState({duration: duration, currentTime: currentTime});
-          }}/>
+        {
+            (()=>{
+              if (this.playlist.length != 0){
+                return (
+                  <Audio file={ this.playlist } nowPlaying={ this.state.nowPlaying } trackTimePassFunc={(duration, currentTime)=>{
+                      this.setState({duration: duration, currentTime: currentTime});
+                    }}/>
+                )
+              }
+              return (
+                <div style={{display: 'none'}}>
+                  <audio id="track" />
+                </div>
+              )
+            })()
+        }
         <Playlist playlist={ this.playlist } show={ this.state.showPlaylist } clickHandler={ (trackN, change)=>{
             if (change){
               this.setState({nowPlaying: trackN,
@@ -65,7 +78,19 @@ class FrontComps extends React.Component {
             }
             deleteClickHandler={ (trackN)=>{
               if (this.playlist.length === 1){
-                return; 
+                this.playlist = [];
+                this.nowPlaying = 0;
+                saveFile(this.playlist);
+                this.setState({
+                  files: null,
+                  playing: false,
+                  duration: 0,
+                  currentTime: 0,
+                  trackName: "",
+                  nowPlaying: 0,
+                  showPlaylist: false
+                })
+                return;
               }
               if (trackN === this.state.nowPlaying){
                 this.setState({trackName: this.playlist[this.state.nowPlaying+1].name});
@@ -109,17 +134,23 @@ class FrontComps extends React.Component {
         <div className='buttons'>
           <PrevButton clickHandler= {
               () => {
-                this.setState({nowPlaying: this.nextPlayingNow(this.state.nowPlaying-1, this.playlist.length),
-                  trackName: this.playlist[this.nextPlayingNow(this.state.nowPlaying-1, this.playlist.length)].name});
+                if (this.playlist.length != 0){
+                  this.setState({nowPlaying: this.nextPlayingNow(this.state.nowPlaying-1, this.playlist.length),
+                    trackName: this.playlist[this.nextPlayingNow(this.state.nowPlaying-1, this.playlist.length)].name});
+                }
               }
             }/>
           <PlayPauseButton playing={ this.state.playing } playingPassFunc={(playing)=>{
-              this.setState({playing: playing});
+              if (this.playlist.length != 0){
+                this.setState({playing: playing});
+              }
             }}/>
           <NextButton clickHandler= {
               () => {
-                this.setState({nowPlaying: this.nextPlayingNow(this.state.nowPlaying+1, this.playlist.length),
-                  trackName: this.playlist[this.nextPlayingNow(this.state.nowPlaying+1, this.playlist.length)].name});
+                if (this.playlist.length){
+                  this.setState({nowPlaying: this.nextPlayingNow(this.state.nowPlaying+1, this.playlist.length),
+                    trackName: this.playlist[this.nextPlayingNow(this.state.nowPlaying+1, this.playlist.length)].name});
+                }
               }
             }/>
         </div>
