@@ -38,7 +38,7 @@ const getPlaylist = () => {
     return result;
   }
   if (parsed.length === 0 || !tryReadingFiles(parsed)){
-    return;
+    return result;
   }
   result = parsed;
   return result;

@@ -65,17 +65,7 @@ class FrontComps extends React.Component {
             }
             deleteClickHandler={ (trackN)=>{
               if (this.playlist.length === 1){
-                this.playlist = new Array();
-                this.nowPlaying = 0;
-                saveFile(this.playlist);
-                this.setState({files: null,
-                  playing: false,
-                  duration: 0,
-                  currentTime: 0,
-                  trackName: "",
-                  nowPlaying: 0,
-                  showPlaylist: false
-                });
+                return; 
               }
               if (trackN === this.state.nowPlaying){
                 this.setState({trackName: this.playlist[this.state.nowPlaying+1].name});
