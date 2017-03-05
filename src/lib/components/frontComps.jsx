@@ -18,16 +18,17 @@ export default
 class FrontComps extends React.Component {
   constructor(){
     super();
-    this.playlist = getPlaylist();
-    this.state = {files: null,
-      playing: !!this.playlist[0],
+    const files = getPlaylist();
+    this.state = {
+      playlist: files,
+      playing: !!files[0],
       duration: 0,
       currentTime: 0,
-      trackName: this.playlist[0] ? this.playlist[0].name : "",
+      trackName: files[0] ? files[0].name : "",
       nowPlaying: 0,
-      showPlaylist: false
+      showPlaylist: false,
+      updateAudio: true
     };
-    this.nowPlaying = 0;
     this.nextPlayingNow = (num, length) => {
       return (num+length)%length;
     }
@@ -38,8 +39,10 @@ class FrontComps extends React.Component {
       }
       clearInterval(onededEventInterval);
       track.onended = () => {
-        this.setState({nowPlaying: this.nextPlayingNow(this.state.nowPlaying+1, this.playlist.length),
-          trackName: this.playlist[this.nextPlayingNow(this.state.nowPlaying+1, this.playlist.length)].name});
+        this.setState({nowPlaying: this.nextPlayingNow(this.state.nowPlaying+1, this.state.playlist.length),
+          trackName: this.state.playlist[this.nextPlayingNow(this.state.nowPlaying+1, this.state.playlist.length)].name,
+          updateAudio: true
+        });
       }
     },500);
   }
@@ -47,65 +50,67 @@ class FrontComps extends React.Component {
     return(
       <div className="screen">
         <DropOnMe filePassFunc={(playlist)=>{
+          let updateAudioBool = false;
+          if (this.state.playlist.length === 0)
+            updateAudioBool = true;
+          let nextPlaylist = this.state.playlist;
           for (let i=0; i < playlist.length; i++)
-            this.playlist.push(playlist[i]);
-          saveFile(this.playlist);
-          this.setState({files: playlist, playing: true, trackName: this.playlist[this.state.nowPlaying].name});
+            nextPlaylist.push(playlist[i]);
+          saveFile(nextPlaylist);
+          this.setState({playlist: nextPlaylist,
+            playing: true,
+            trackName: this.state.playlist[this.state.nowPlaying].name,
+            updateAudio: updateAudioBool});
           }}/>
-        {
-            (()=>{
-              if (this.playlist.length != 0){
-                return (
-                  <Audio file={ this.playlist } nowPlaying={ this.state.nowPlaying } trackTimePassFunc={(duration, currentTime)=>{
-                      this.setState({duration: duration, currentTime: currentTime});
-                    }}/>
-                )
-              }
-              return (
-                <div style={{display: 'none'}}>
-                  <audio id="track" />
-                </div>
-              )
-            })()
-        }
-        <Playlist playlist={ this.playlist } show={ this.state.showPlaylist } clickHandler={ (trackN, change)=>{
-            if (change){
-              this.setState({nowPlaying: trackN,
-                trackName: this.playlist[trackN].name,
-                playing: true});
-            }
+        <Audio shoulUpdate={ this.state.updateAudio } trackTimePassFunc={(duration, currentTime)=>{
+              this.setState({duration: duration, currentTime: currentTime});
+          }}
+          src={ !!this.state.playlist[this.state.nowPlaying] ? this.state.playlist[this.state.nowPlaying].path : ""}
+          updated={ ()=>{
+            this.setState({updateAudio: false});
+          }}
+        />
+      <Playlist playlist={ this.state.playlist } show={ this.state.showPlaylist } clickHandler={ (trackN, change)=>{
+                if (change){
+                  this.setState({nowPlaying: trackN,
+                    trackName: this.state.playlist[trackN].name,
+                    playing: true,
+                    updateAudio: true});
+                }
               }
             }
             deleteClickHandler={ (trackN)=>{
-              if (this.playlist.length === 1){
-                this.playlist = [];
-                this.nowPlaying = 0;
-                saveFile(this.playlist);
+              if (this.state.playlist.length === 1){
+                saveFile([]);
                 this.setState({
-                  files: null,
+                  playlist: [],
                   playing: false,
                   duration: 0,
                   currentTime: 0,
                   trackName: "",
                   nowPlaying: 0,
-                  showPlaylist: false
+                  showPlaylist: false,
+                  updateAudio: true
                 })
                 return;
               }
               if (trackN === this.state.nowPlaying){
-                this.setState({trackName: this.playlist[this.state.nowPlaying+1].name});
-                this.playlist.splice(trackN, 1);
-                saveFile(this.playlist);
+                let nextPlaylist = this.state.playlist.splice(trackN, 1);
+                saveFile(nextPlaylist);
+                this.setState({playlist: nextPlaylist,
+                  trackName: this.state.playlist[this.state.nowPlaying+1].name,
+                  updateAudio: true});
                 return;
               }
-              else if (trackN < this.state.nowPlaying){
-                this.playlist.splice(trackN, 1);
-                saveFile(this.playlist);
-                this.setState({trackName: this.playlist[this.state.nowPlaying-1].name});
+              else if (trackN > this.state.nowPlaying){
+                let nextPlaylist = this.state.playlist.splice(trackN, 1);
+                saveFile(nextPlaylist);
+                this.setState({playlist: nextPlaylist,
+                  trackName: this.state.playlist[this.state.nowPlaying-1].name,
+                  updateAudio: false
+                });
                 return;
               }
-              this.playlist.splice(trackN, 1);
-              saveFile(this.playlist);
               }}
         />
         <div className="topButtons">
@@ -115,10 +120,17 @@ class FrontComps extends React.Component {
             }}/>
           <div className="addFilesDiv">
             <AddFiles filePassFunc={(playlist)=>{
-                for (let i=0; i < playlist.length; i++)
-                  this.playlist.push(playlist[i]);
-                saveFile(this.playlist);
-                this.setState({files: playlist, playing: true, trackName: this.playlist[this.state.nowPlaying].name});
+              let updateAudioBool = false;
+              if (this.state.playlist.length === 0)
+                updateAudioBool = true;
+              let nextPlaylist = this.state.playlist;
+              for (let i=0; i < playlist.length; i++)
+                nextPlaylist.push(playlist[i]);
+              saveFile(nextPlaylist);
+              this.setState({playlist: nextPlaylist,
+                playing: true,
+                trackName: this.state.playlist[this.state.nowPlaying].name,
+                updateAudio: updateAudioBool});
               }}/>
           </div>
         </div>
@@ -134,22 +146,26 @@ class FrontComps extends React.Component {
         <div className='buttons'>
           <PrevButton clickHandler= {
               () => {
-                if (this.playlist.length != 0){
-                  this.setState({nowPlaying: this.nextPlayingNow(this.state.nowPlaying-1, this.playlist.length),
-                    trackName: this.playlist[this.nextPlayingNow(this.state.nowPlaying-1, this.playlist.length)].name});
+                if (this.state.playlist.length != 0){
+                  this.setState({nowPlaying: this.nextPlayingNow(this.state.nowPlaying-1, this.state.playlist.length),
+                    trackName: this.state.playlist[this.nextPlayingNow(this.state.nowPlaying-1, this.state.playlist.length)].name,
+                    updateAudio: true
+                  });
                 }
               }
             }/>
           <PlayPauseButton playing={ this.state.playing } playingPassFunc={(playing)=>{
-              if (this.playlist.length != 0){
+              if (this.state.playlist.length != 0){
                 this.setState({playing: playing});
               }
             }}/>
           <NextButton clickHandler= {
               () => {
-                if (this.playlist.length){
-                  this.setState({nowPlaying: this.nextPlayingNow(this.state.nowPlaying+1, this.playlist.length),
-                    trackName: this.playlist[this.nextPlayingNow(this.state.nowPlaying+1, this.playlist.length)].name});
+                if (this.state.playlist.length){
+                  this.setState({nowPlaying: this.nextPlayingNow(this.state.nowPlaying+1, this.state.playlist.length),
+                    trackName: this.state.playlist[this.nextPlayingNow(this.state.nowPlaying+1, this.state.playlist.length)].name,
+                    updateAudio: true
+                  });
                 }
               }
             }/>
