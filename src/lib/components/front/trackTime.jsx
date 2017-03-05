@@ -14,7 +14,6 @@ class TrackTime extends React.Component {
   componentWillReceiveProps(nextProps){
     this.duration = nextProps.duration;
     this.progress = (nextProps.currentTime/nextProps.duration)*100;
-    this.render();
   }
   render(){
     return(

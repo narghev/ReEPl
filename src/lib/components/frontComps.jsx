@@ -8,7 +8,7 @@ import Audio from './audio.jsx';
 import DropOnMe from './front/dragDrop.jsx';
 import { TrackName } from './front/trackName.jsx';
 import { TrackDuration } from './front/trackDuration.jsx';
-import TrackCurrentTime from './front/trackCurrentTime.jsx';
+import { TrackCurrentTime } from './front/trackCurrentTime.jsx';
 import BackGroundPic from './front/backgroundPic.jsx';
 import AddFiles from './front/addFiles.jsx';
 import PlaylistButton from './front/playlistButton.jsx';
