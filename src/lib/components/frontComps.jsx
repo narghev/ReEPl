@@ -10,7 +10,7 @@ import { TrackName } from './front/trackName.jsx';
 import { TrackDuration } from './front/trackDuration.jsx';
 import { TrackCurrentTime } from './front/trackCurrentTime.jsx';
 import BackGroundPic from './front/backgroundPic.jsx';
-import AddFiles from './front/addFiles.jsx';
+import { AddFiles } from './front/addFiles.jsx';
 import { PlaylistButton } from './front/playlistButton.jsx';
 import Playlist from './playlist/playlist.jsx';
 
