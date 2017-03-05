@@ -1,5 +1,5 @@
 import React from 'react';
-import PlaylistContent from './playlistContent.jsx';
+import { PlaylistContent } from './playlistContent.jsx';
 
 export default
 class Playlist extends React.Component {

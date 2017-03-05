@@ -1,42 +1,39 @@
 import React from 'react';
 
-export default
-class PlaylistContent extends React.Component {
-  constructor(){
-    super();
-    this.content = new Array();
-    this.change = true;
-  }
-  render(){
-    this.content = [];
-    for (let i=0; i<this.props.playlist.length; i++){
-        this.content.push(
-          <div key={i} className="playlistContent"
-            onClick = { ()=> {
-              this.props.clickHandler(i, this.change);
-              this.change = true;
-            }}
-            style={{
-              backgroundColor: (()=>{
-                if (i%2 === 0)
-                  return 'rgb(82, 82, 82)';
-                return '#191919';
-              })()
-            }}>
-            <p>{this.props.playlist[i].name.split('.')[0]}</p>
-            <img src="images/delete.png" onClick = { ()=> {
-              this.change = false;
-              this.props.deleteClickHandler(i);
-            }}/>
-          </div>
-        )
+export const PlaylistContent = ({playlist, clickHandler, deleteClickHandler}) => {
+  let content = [];
+  let change = true;
+  for (let i=0; i < playlist.length; i++){
+    let name = "";
+    for (let j = 0; j < playlist[i].name.split('.').length-1; j++){
+      name+=playlist[i].name.split('.')[j];
     }
-    return(
-      <div>
-        {
-          this.content
-        }
+    content.push(
+      <div key={i} className="playlistContent"
+        onClick = { ()=> {
+          clickHandler(i, change);
+          change = true;
+        }}
+        style={{
+          backgroundColor: (()=>{
+            if (i%2 === 0)
+              return 'rgb(82, 82, 82)';
+            return '#191919';
+          })()
+        }}>
+        <p>{ name }</p>
+        <img src="images/delete.png" onClick = { ()=> {
+          change = false;
+          deleteClickHandler(i);
+        }}/>
       </div>
     )
   }
+  return(
+    <div>
+      {
+        content
+      }
+    </div>
+  )
 }
