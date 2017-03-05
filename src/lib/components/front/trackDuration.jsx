@@ -1,20 +1,19 @@
 import React from 'react';
 
-export default
-class TrackDuration extends React.Component {
-  render(){
-    if (this.props.duration != 0){
-      if ((this.props.currentTime/this.props.duration)*100 <= 90){
-        return(
-          <p>{`${Math.floor(this.props.duration/60)}:${Math.floor(this.props.duration - Math.floor(this.props.duration/60)*60)}`}</p>
-        );
-      }
+export const TrackDuration = ({duration, currentTime}) => {
+  if (duration != 0){
+    if ((currentTime/duration)*100 <= 90){
       return(
         <p>
-          {`${Math.floor(this.props.currentTime/60)}:${Math.floor(this.props.currentTime - Math.floor(this.props.currentTime/60)*60)}`}
+          {`${Math.floor(duration/60)}:${Math.floor(duration - Math.floor(duration/60)*60)}`}
         </p>
-      )
+      );
     }
-    return (<p></p>);
+    return(
+      <p>
+        {`${Math.floor(currentTime/60)}:${Math.floor(currentTime - Math.floor(currentTime/60)*60)}`}
+      </p>
+    )
   }
+  return (<p></p>);
 }

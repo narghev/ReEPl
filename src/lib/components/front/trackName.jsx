@@ -1,12 +1,14 @@
 import React from 'react';
 
-export default
-class TrackName extends React.Component {
-  render(){
-    return(
-      <div className="trackName">
-        <p>{this.props.name.split(".")[0]}</p>
-      </div>
-    )
+export const TrackName = ({name}) => {
+  let result = "";
+  const array = name.split('.');
+  for (let i = 0; i < array.length-1; i++){
+    result+=array[i];
   }
-}
+  return (
+    <div className="trackName">
+      <p>{ result }</p>
+    </div>
+  );
+};
