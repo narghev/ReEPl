@@ -1,7 +1,7 @@
 import React from 'react';
 import PlayPauseButton from './front/playPauseButton.jsx';
-import PrevButton from './front/prevButton.jsx';
-import NextButton from './front/nextButton.jsx';
+import { PrevButton } from './front/prevButton.jsx';
+import { NextButton } from './front/nextButton.jsx';
 import VolumeControl from './front/volumeControl.jsx';
 import TrackTime from './front/trackTime.jsx';
 import Audio from './audio.jsx';
@@ -11,7 +11,7 @@ import { TrackDuration } from './front/trackDuration.jsx';
 import { TrackCurrentTime } from './front/trackCurrentTime.jsx';
 import BackGroundPic from './front/backgroundPic.jsx';
 import AddFiles from './front/addFiles.jsx';
-import PlaylistButton from './front/playlistButton.jsx';
+import { PlaylistButton } from './front/playlistButton.jsx';
 import Playlist from './playlist/playlist.jsx';
 
 export default

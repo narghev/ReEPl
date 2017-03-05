@@ -1,10 +1,7 @@
 import React from 'react';
 
-export default
-class PrevButton extends React.Component {
-  render(){
-    return(
-      <img className='navButtons' src='images/prev.png' onClick= {this.props.clickHandler } />
-    )
-  }
+export const PrevButton = ({clickHandler}) => {
+  return(
+    <img className='navButtons' src='images/prev.png' onClick= {clickHandler } />
+  )
 }

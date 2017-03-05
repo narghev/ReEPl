@@ -1,10 +1,7 @@
 import React from 'react';
 
-export default
-class NextButton extends React.Component {
-  render(){
-    return(
-      <img className='navButtons' src='images/next.png' onClick= {this.props.clickHandler }/>
-    )
-  }
+export const NextButton = ({clickHandler}) => {
+  return(
+    <img className='navButtons' src='images/next.png' onClick= { clickHandler }/>
+  )
 }
