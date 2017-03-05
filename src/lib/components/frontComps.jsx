@@ -133,6 +133,28 @@ class FrontComps extends React.Component {
                 });
               }
               }}
+              clearPlaylistClickHandler = {
+                () => {
+                  saveFile([]);
+                  this.setState({
+                    playlist: [],
+                    playing: false,
+                    duration: 0,
+                    currentTime: 0,
+                    trackName: "",
+                    nowPlaying: 0,
+                    showPlaylist: false,
+                    updateAudio: true
+                  });
+                  try {
+                    const track = document.getElementById('track');
+                    track.pause();
+                    track.src = "";
+                    track.load();
+                    track.removeAttribute('src');
+                  } catch(e){}
+                }
+              }
         />
         <div className="topButtons">
           <PlaylistButton clickHandler={()=>{

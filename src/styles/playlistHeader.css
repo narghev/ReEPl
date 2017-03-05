@@ -1,0 +1,18 @@
+.clearPlaylist {
+  width: 4vw;
+  height: 5vh;
+  position: relative;
+  top: 3.4vh;
+  left: 48vw;
+  z-index: 4;
+}
+
+.clearPlaylist img{
+  width: 4vw;
+  height: 5vh;
+}
+
+.playlistHeader {
+  display: flex;
+  flex-direction: row;
+}

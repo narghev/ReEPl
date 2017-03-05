@@ -1,5 +1,6 @@
 import React from 'react';
 import { PlaylistContent } from './playlistContent.jsx';
+import { ClearPlaylist } from './clearPlaylist.jsx';
 
 export default
 class Playlist extends React.Component {
@@ -11,7 +12,10 @@ class Playlist extends React.Component {
     if (this.props.show){
        return (
          <div className="playlistScreen">
-           <p className="playlistText">Playlist</p>
+           <div className="playlistHeader">
+             <p className="playlistText">Playlist</p>
+             <ClearPlaylist clickHandler={ this.props.clearPlaylistClickHandler } />
+           </div>
            <PlaylistContent playlist={ this.props.playlist } clickHandler= { (i, bool)=>{
               this.props.clickHandler(i, bool);
              }}
