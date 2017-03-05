@@ -103,24 +103,35 @@ class FrontComps extends React.Component {
                 } catch(e){}
                 return;
               }
-              /*
               if (trackN === this.state.nowPlaying){
-                let nextPlaylist = this.state.playlist.splice(trackN, 1);
+                let playlist = this.state.playlist;
+                playlist.splice(trackN, 1);
+                let nextPlaylist = playlist;
                 saveFile(nextPlaylist);
                 this.setState({playlist: nextPlaylist,
-                  trackName: this.state.playlist[this.state.nowPlaying+1].name,
+                  trackName: nextPlaylist[this.state.nowPlaying].name,
                   updateAudio: true});
-                return;
               }
               else if (trackN > this.state.nowPlaying){
-                let nextPlaylist = this.state.playlist.splice(trackN, 1);
+                let playlist = this.state.playlist;
+                playlist.splice(trackN, 1);
+                let nextPlaylist = playlist;
                 saveFile(nextPlaylist);
                 this.setState({playlist: nextPlaylist,
-                  trackName: this.state.playlist[this.state.nowPlaying-1].name,
                   updateAudio: false
                 });
-                return;
-              }*/
+              }
+              else if (trackN < this.state.nowPlaying){
+                let playlist = this.state.playlist;
+                playlist.splice(trackN, 1);
+                let nextPlaylist = playlist;
+                saveFile(nextPlaylist);
+                let playing = this.state.nowPlaying-1;
+                this.setState({playlist: nextPlaylist,
+                  nowPlaying: playing,
+                  updateAudio: false
+                });
+              }
               }}
         />
         <div className="topButtons">
