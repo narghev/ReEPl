@@ -16,7 +16,7 @@ const saveFile = (data) => {
 }
 
 const tryReadingFiles = (files) => {
-  const result = true;
+  let result = true;
   for (let i=0; i < files.length; i++){
     try {
       fs.readFileSync(files[i].path);
