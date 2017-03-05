@@ -1,12 +1,12 @@
 import React from 'react';
 import FileFrop from 'react-file-drop';
 
-export default
-class DropOnMe extends React.Component {
-  dropHandler = (files) => {
+export const DropOnMe = ({filePassFunc}) => {
+  const dropHandler = (files) => {
     const playlist = [];
     for (let i of files) {
-      if (i.name.split('.')[i.name.split('.').length-1] === 'mp3' || i.name.split('.')[i.name.split('.').length-1] === 'wav'){
+      const array = i.name.split('.');
+      if (array[array.length-1] === 'mp3' || array[array.length-1] === 'wav'){
         playlist.push({
           name: i.name,
           path: i.path
@@ -19,11 +19,9 @@ class DropOnMe extends React.Component {
         path: ""
       });
     }
-    this.props.filePassFunc(playlist);
+    filePassFunc(playlist);
   }
-  render(){
-    return(
-        <FileFrop className="dropOnMe" frame={ document } onDrop={ this.dropHandler } />
-    )
-  }
+  return(
+      <FileFrop className="dropOnMe" frame={ document } onDrop={ dropHandler } />
+  )
 }

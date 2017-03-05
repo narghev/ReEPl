@@ -5,7 +5,7 @@ import { NextButton } from './front/nextButton.jsx';
 import VolumeControl from './front/volumeControl.jsx';
 import TrackTime from './front/trackTime.jsx';
 import Audio from './audio.jsx';
-import DropOnMe from './front/dragDrop.jsx';
+import { DropOnMe } from './front/dragDrop.jsx';
 import { TrackName } from './front/trackName.jsx';
 import { TrackDuration } from './front/trackDuration.jsx';
 import { TrackCurrentTime } from './front/trackCurrentTime.jsx';
