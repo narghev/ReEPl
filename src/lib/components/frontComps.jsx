@@ -93,9 +93,17 @@ class FrontComps extends React.Component {
                   nowPlaying: 0,
                   showPlaylist: false,
                   updateAudio: true
-                })
+                });
+                try {
+                  const track = document.getElementById('track');
+                  track.pause();
+                  track.src = "";
+                  track.load();
+                  track.removeAttribute('src');
+                } catch(e){}
                 return;
               }
+              /*
               if (trackN === this.state.nowPlaying){
                 let nextPlaylist = this.state.playlist.splice(trackN, 1);
                 saveFile(nextPlaylist);
@@ -112,7 +120,7 @@ class FrontComps extends React.Component {
                   updateAudio: false
                 });
                 return;
-              }
+              }*/
               }}
         />
         <div className="topButtons">
