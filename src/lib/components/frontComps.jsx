@@ -75,7 +75,9 @@ class FrontComps extends React.Component {
                   this.setState({nowPlaying: trackN,
                     trackName: this.state.playlist[trackN].name,
                     playing: true,
-                    updateAudio: true});
+                    updateAudio: true,
+                    showPlaylist: false
+                  });
                 }
               }
             }

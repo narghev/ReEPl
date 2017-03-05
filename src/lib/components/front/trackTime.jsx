@@ -8,8 +8,10 @@ class TrackTime extends React.Component {
     this.duration = 0;
   }
   clickHandler = (event) => {
-    const track = document.getElementById('track');
-    track.currentTime = (this.duration)*(event.clientX/window.innerWidth);
+    try {
+      const track = document.getElementById('track');
+      track.currentTime = (this.duration)*(event.clientX/window.innerWidth);
+    } catch(e){}
   }
   componentWillReceiveProps(nextProps){
     this.duration = nextProps.duration;
