@@ -23,4 +23,5 @@
   margin-left: 6vw;
   margin-bottom: 4vh;
   transition: font-size 1s;
+  transition-delay: 0.1s;
 }

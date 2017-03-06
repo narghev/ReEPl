@@ -1,5 +1,5 @@
 {
-  "name": "reactjs-music-player",
+  "name": "ReEPl",
   "version": "1.0.0",
   "description": "Music player, powered by react JS",
   "main": "main.js",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/narghev/music-player_React_Electron.git"
+    "url": "git+https://github.com/narghev/ReEPl.git"
   },
   "author": "Narek Ghevandiani <narghev1998@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/narghev/music-player_React_Electron/issues"
+    "url": "https://github.com/narghev/ReEPl/issues"
   },
-  "homepage": "https://github.com/narghev/music-player_React_Electron#readme",
+  "homepage": "https://github.com/narghev/ReEPl#readme",
   "dependencies": {
     "electron": "^1.4.15",
     "react": "^15.4.2",

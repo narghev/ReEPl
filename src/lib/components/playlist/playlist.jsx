@@ -36,7 +36,7 @@ class Playlist extends React.Component {
     return (
       <div className="playlistScreen" style={{width: "0vw", opacity: 1}}>
         <div className="playlistHeader">
-          <p className="playlistText" style={{fontSize: '0vw'}}>Playlist</p>
+          <p className="playlistText" style={{fontSize: '0vw', transitionDelay: '0.1s', transition: 'font-size 0.5s'}}>Playlist</p>
           <ClearPlaylist styleImg={{width: '0vw', height: '0vh', transitionDelay: '0s', opacity: 0}} clickHandler={ this.props.clearPlaylistClickHandler } />
         </div>
         <PlaylistContent playlist={ this.props.playlist } clickHandler= { (i, bool)=>{
