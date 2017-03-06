@@ -18,7 +18,21 @@ export default
 class FrontComps extends React.Component {
   constructor(){
     super();
-    const files = getPlaylist();
+    let files = [];
+    getPlaylist().then((playlist)=>{
+      console.log(playlist);
+      files = playlist;
+      this.state = {
+        playlist: files,
+        playing: !!files[0],
+        duration: 0,
+        currentTime: 0,
+        trackName: files[0] ? files[0].name : "",
+        nowPlaying: 0,
+        showPlaylist: false,
+        updateAudio: true
+      };
+    });
     this.state = {
       playlist: files,
       playing: !!files[0],

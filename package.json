@@ -20,6 +20,7 @@
   "homepage": "https://github.com/narghev/ReEPl#readme",
   "dependencies": {
     "electron": "^1.4.15",
+    "electron-json-storage": "^3.0.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-file-drop": "^0.1.8",
