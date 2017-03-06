@@ -192,7 +192,8 @@ class FrontComps extends React.Component {
                 if (this.state.playlist.length != 0){
                   this.setState({nowPlaying: this.nextPlayingNow(this.state.nowPlaying-1, this.state.playlist.length),
                     trackName: this.state.playlist[this.nextPlayingNow(this.state.nowPlaying-1, this.state.playlist.length)].name,
-                    updateAudio: true
+                    updateAudio: true,
+                    playing: true
                   });
                 }
               }
@@ -207,7 +208,8 @@ class FrontComps extends React.Component {
                 if (this.state.playlist.length){
                   this.setState({nowPlaying: this.nextPlayingNow(this.state.nowPlaying+1, this.state.playlist.length),
                     trackName: this.state.playlist[this.nextPlayingNow(this.state.nowPlaying+1, this.state.playlist.length)].name,
-                    updateAudio: true
+                    updateAudio: true,
+                    playing: true
                   });
                 }
               }
