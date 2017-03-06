@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const PlaylistContent = ({playlist, clickHandler, deleteClickHandler}) => {
+export const PlaylistContent = ({playlist, clickHandler, deleteClickHandler, stylesP, styleImg}) => {
   let content = [];
   let change = true;
   for (let i=0; i < playlist.length; i++){
@@ -21,11 +21,13 @@ export const PlaylistContent = ({playlist, clickHandler, deleteClickHandler}) =>
             return '#191919';
           })()
         }}>
-        <p>{ name }</p>
+        <p style={stylesP}>{ name }</p>
         <img src="images/delete.png" onClick = { ()=> {
           change = false;
           deleteClickHandler(i);
-        }}/>
+        }}
+        style={styleImg}
+        />
       </div>
     )
   }

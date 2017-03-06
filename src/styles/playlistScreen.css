@@ -8,6 +8,12 @@
   flex-direction: column;
   justify-content: flex-start;
   background-color: rgb(30, 30, 30);
+  opacity: 1;
+  z-index: 2;
+}
+
+.playlistScreen {
+  transition: width 1s;
 }
 
 .playlistText {
@@ -16,12 +22,5 @@
   margin-top: 2vh;
   margin-left: 6vw;
   margin-bottom: 4vh;
-}
-
-.playlistHide {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  height: 0px;
-  width: 0px;
+  transition: font-size 1s;
 }
