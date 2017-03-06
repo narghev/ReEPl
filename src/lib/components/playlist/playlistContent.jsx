@@ -32,7 +32,7 @@ export const PlaylistContent = ({playlist, clickHandler, deleteClickHandler, sty
     )
   }
   return(
-    <div>
+    <div style={{overflowY: 'scroll', overflowX: 'hidden'}}>
       {
         content
       }
