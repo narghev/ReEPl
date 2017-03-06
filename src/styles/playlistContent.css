@@ -4,7 +4,7 @@
   padding-left: 2vw;
   font-family: Arial, Helvetica, sans-serif;
   margin-top: 0.5vh;
-  transition: font-size 1s;
+  transition: font-size 0.5s;
 }
 
 .playlistContent {
@@ -19,5 +19,5 @@
   height: 3vh;
   margin-top: 0.75vh;
   margin-right: 2vw;
-  transition: width 1s, height 1s;
+  transition: width 0.5s, height 0.5s;
 }

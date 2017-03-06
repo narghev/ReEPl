@@ -13,7 +13,7 @@
 }
 
 .playlistScreen {
-  transition: width 1s;
+  transition: width 0.75s;
 }
 
 .playlistText {

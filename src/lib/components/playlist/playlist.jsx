@@ -14,7 +14,7 @@ class Playlist extends React.Component {
          <div className="playlistScreen">
            <div className="playlistHeader">
              <p className="playlistText">Playlist</p>
-             <ClearPlaylist styleImg={{width: '4vw', height: '5vh', opacity: 1}} clickHandler={ this.props.clearPlaylistClickHandler } />
+             <ClearPlaylist styleImg={{width: '4vw', height: '5vh'}} clickHandler={ this.props.clearPlaylistClickHandler } />
            </div>
            <PlaylistContent playlist={ this.props.playlist } clickHandler= { (i, bool)=>{
               this.props.clickHandler(i, bool);
@@ -37,7 +37,7 @@ class Playlist extends React.Component {
       <div className="playlistScreen" style={{width: "0vw", opacity: 1}}>
         <div className="playlistHeader">
           <p className="playlistText" style={{fontSize: '0vw'}}>Playlist</p>
-          <ClearPlaylist styleImg={{width: '0vw', height: '0vh', opacity: 0}} clickHandler={ this.props.clearPlaylistClickHandler } />
+          <ClearPlaylist styleImg={{width: '0vw', height: '0vh', transitionDelay: '0s', opacity: 0}} clickHandler={ this.props.clearPlaylistClickHandler } />
         </div>
         <PlaylistContent playlist={ this.props.playlist } clickHandler= { (i, bool)=>{
            this.props.clickHandler(i, bool);
