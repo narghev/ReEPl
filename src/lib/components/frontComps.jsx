@@ -31,7 +31,8 @@ class FrontComps extends React.Component {
         trackName: files[0] ? files[0].name : "",
         nowPlaying: 0,
         showPlaylist: false,
-        updateAudio: true
+        updateAudio: true,
+        shuffle: true
       };
     });
     this.state = {
@@ -42,10 +43,14 @@ class FrontComps extends React.Component {
       trackName: files[0] ? files[0].name : "",
       nowPlaying: 0,
       showPlaylist: false,
-      updateAudio: true
+      updateAudio: true,
+      shuffle: true
     };
     this.nextPlayingNow = (num, length) => {
       return (num+length)%length;
+    }
+    this.shuffle = (length) => {
+      return Math.floor(Math.random()*length);
     }
     const onededEventInterval = setTimeout(()=>{
       const track = document.getElementById('track');
@@ -54,6 +59,14 @@ class FrontComps extends React.Component {
       }
       clearInterval(onededEventInterval);
       track.onended = () => {
+        if (this.state.shuffle){
+          let nextPlaying = this.shuffle(this.state.playlist.length);
+          this.setState({nowPlaying: nextPlaying,
+            trackName: this.state.playlist[nextPlaying].name,
+            updateAudio: true
+          });
+          return;
+        }
         this.setState({nowPlaying: this.nextPlayingNow(this.state.nowPlaying+1, this.state.playlist.length),
           trackName: this.state.playlist[this.nextPlayingNow(this.state.nowPlaying+1, this.state.playlist.length)].name,
           updateAudio: true
