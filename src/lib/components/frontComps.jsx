@@ -65,17 +65,19 @@ class FrontComps extends React.Component {
     return(
       <div className="screen">
         <DropOnMe filePassFunc={(playlist)=>{
-          let updateAudioBool = false;
-          if (this.state.playlist.length === 0)
-            updateAudioBool = true;
-          let nextPlaylist = this.state.playlist;
-          for (let i=0; i < playlist.length; i++)
-            nextPlaylist.push(playlist[i]);
-          saveFile(nextPlaylist);
-          this.setState({playlist: nextPlaylist,
-            playing: true,
-            trackName: this.state.playlist[this.state.nowPlaying].name,
-            updateAudio: updateAudioBool});
+          if (playlist.length != 0){
+            let updateAudioBool = false;
+            if (this.state.playlist.length === 0)
+              updateAudioBool = true;
+            let nextPlaylist = this.state.playlist;
+            for (let i=0; i < playlist.length; i++)
+              nextPlaylist.push(playlist[i]);
+            saveFile(nextPlaylist);
+            this.setState({playlist: nextPlaylist,
+              playing: true,
+              trackName: this.state.playlist[this.state.nowPlaying].name,
+              updateAudio: updateAudioBool});
+          }
           }}/>
         <Audio shoulUpdate={ this.state.updateAudio } trackTimePassFunc={(duration, currentTime)=>{
               this.setState({duration: duration, currentTime: currentTime});

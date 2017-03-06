@@ -6,18 +6,12 @@ export const DropOnMe = ({filePassFunc}) => {
     const playlist = [];
     for (let i of files) {
       const array = i.name.split('.');
-      if (array[array.length-1] === 'mp3' || array[array.length-1] === 'wav'){
+      if (array[array.length-1].toLowerCase() === 'mp3' || array[array.length-1].toLowerCase() === 'wav'){
         playlist.push({
           name: i.name,
           path: i.path
         });
       }
-    }
-    if (playlist.length === 0){
-      playlist.push({
-        name: "",
-        path: ""
-      });
     }
     filePassFunc(playlist);
   }
