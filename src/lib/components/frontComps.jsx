@@ -19,9 +19,10 @@ class FrontComps extends React.Component {
   constructor(){
     super();
     let files = [];
-    getPlaylist().then((playlist)=>{
-      console.log(playlist);
-      files = playlist;
+    getPlaylist().then((pl)=>{
+      if (!checkPlaylist(pl))
+        return;
+      files = pl;
       this.state = {
         playlist: files,
         playing: !!files[0],
