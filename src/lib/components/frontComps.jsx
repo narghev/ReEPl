@@ -32,7 +32,7 @@ class FrontComps extends React.Component {
         nowPlaying: 0,
         showPlaylist: false,
         updateAudio: true,
-        shuffle: true
+        shuffle: false
       };
     });
     this.state = {
@@ -44,7 +44,7 @@ class FrontComps extends React.Component {
       nowPlaying: 0,
       showPlaylist: false,
       updateAudio: true,
-      shuffle: true
+      shuffle: false
     };
     this.nextPlayingNow = (num, length) => {
       return (num+length)%length;
