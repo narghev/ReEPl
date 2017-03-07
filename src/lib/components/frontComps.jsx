@@ -236,6 +236,14 @@ class FrontComps extends React.Component {
           <NextButton clickHandler= {
               () => {
                 if (this.state.playlist.length){
+                  if (this.state.shuffle){
+                    let nextPlaying = this.shuffle(this.state.playlist.length);
+                    this.setState({nowPlaying: nextPlaying,
+                      trackName: this.state.playlist[nextPlaying].name,
+                      updateAudio: true
+                    });
+                    return;
+                  }
                   this.setState({nowPlaying: this.nextPlayingNow(this.state.nowPlaying+1, this.state.playlist.length),
                     trackName: this.state.playlist[this.nextPlayingNow(this.state.nowPlaying+1, this.state.playlist.length)].name,
                     updateAudio: true,
