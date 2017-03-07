@@ -13,6 +13,7 @@ import BackGroundPic from './front/backgroundPic.jsx';
 import { AddFiles } from './front/addFiles.jsx';
 import { PlaylistButton } from './front/playlistButton.jsx';
 import Playlist from './playlist/playlist.jsx';
+import { Shuffle } from './front/shuffle.jsx';
 
 export default
 class FrontComps extends React.Component {
@@ -187,19 +188,16 @@ class FrontComps extends React.Component {
                   } catch(e){}
                 }
               }
-              shuffle = { this.state.shuffle }
-              shuffleClickHandler = {
-                ()=>{
-                  let shuffleBool = this.state.shuffle;
-                  this.setState({shuffle: !shuffleBool});
-                }
-              }
         />
         <div className="topButtons">
           <PlaylistButton clickHandler={()=>{
               const nextShowPlaylistVal = !this.state.showPlaylist;
               this.setState({showPlaylist: nextShowPlaylistVal});
             }}/>
+          <Shuffle shuffle={ this.state.shuffle } clickHandler={ ()=>{
+            let shuffleBool = this.state.shuffle;
+            this.setState({shuffle: !shuffleBool});
+          } }/>
           <div className="addFilesDiv">
             <AddFiles filePassFunc={(playlist)=>{
               let updateAudioBool = false;

@@ -1,4 +1,5 @@
-.shuffle, .shuffle img {
+.shuffle {
+  margin-top: 1.5vh;
   width: 3vw;
   height: 3vh;
 }
