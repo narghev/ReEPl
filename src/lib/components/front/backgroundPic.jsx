@@ -17,7 +17,7 @@ class BackGroundPic extends React.Component {
     clearInterval(this.filter);
     if (this.props.playing) {
       this.filter = setInterval(()=>{
-        let filterNow = this.state.filterDeg;
+        let filterNow = (this.state.filterDeg%360);
         this.setState({filterDeg: filterNow+1});
      },50);
     }
