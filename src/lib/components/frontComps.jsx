@@ -61,6 +61,8 @@ class FrontComps extends React.Component {
       track.onended = () => {
         if (this.state.shuffle){
           let nextPlaying = this.shuffle(this.state.playlist.length);
+          if (nextPlaying === this.state.nowPlaying)
+            nextPlaying = this.shuffle(this.state.playlist.length);
           this.setState({nowPlaying: nextPlaying,
             trackName: this.state.playlist[nextPlaying].name,
             updateAudio: true
@@ -238,9 +240,12 @@ class FrontComps extends React.Component {
                 if (this.state.playlist.length){
                   if (this.state.shuffle){
                     let nextPlaying = this.shuffle(this.state.playlist.length);
+                    if (nextPlaying === this.state.nowPlaying)
+                      nextPlaying = this.shuffle(this.state.playlist.length);
                     this.setState({nowPlaying: nextPlaying,
                       trackName: this.state.playlist[nextPlaying].name,
-                      updateAudio: true
+                      updateAudio: true,
+                      playing: true
                     });
                     return;
                   }
