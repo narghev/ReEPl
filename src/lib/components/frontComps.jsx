@@ -214,7 +214,7 @@ class FrontComps extends React.Component {
               }}/>
           </div>
         </div>
-        <BackGroundPic />
+        <BackGroundPic playing={ this.state.playing }/>
         <TrackName name={ this.state.trackName } />
         <div className="trackTimeInfo">
           <TrackCurrentTime
