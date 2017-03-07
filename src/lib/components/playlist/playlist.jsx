@@ -1,6 +1,7 @@
 import React from 'react';
 import { PlaylistContent } from './playlistContent.jsx';
 import { ClearPlaylist } from './clearPlaylist.jsx';
+import { Shuffle } from './shuffle.jsx';
 
 export default
 class Playlist extends React.Component {
@@ -14,6 +15,7 @@ class Playlist extends React.Component {
          <div className="playlistScreen">
            <div className="playlistHeader">
              <p className="playlistText">Playlist</p>
+             <Shuffle shuffle={ this.props.shuffle } clickHandler={ this.props.shuffleClickHandler }/>
              <ClearPlaylist styleImg={{width: '4vw', height: '5vh'}} clickHandler={ this.props.clearPlaylistClickHandler } />
            </div>
            <PlaylistContent playlist={ this.props.playlist } clickHandler= { (i, bool)=>{

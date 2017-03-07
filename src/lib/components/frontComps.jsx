@@ -187,6 +187,13 @@ class FrontComps extends React.Component {
                   } catch(e){}
                 }
               }
+              shuffle = { this.state.shuffle }
+              shuffleClickHandler = {
+                ()=>{
+                  let shuffleBool = this.state.shuffle;
+                  this.setState({shuffle: !shuffleBool});
+                }
+              }
         />
         <div className="topButtons">
           <PlaylistButton clickHandler={()=>{
