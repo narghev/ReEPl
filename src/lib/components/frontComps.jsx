@@ -198,7 +198,9 @@ class FrontComps extends React.Component {
           <Shuffle shuffle={ this.state.shuffle } clickHandler={ ()=>{
             let shuffleBool = this.state.shuffle;
             this.setState({shuffle: !shuffleBool});
-          } }/>
+          } }
+            filterDeg={ this.globalFilterDig }
+          />
           <div className="addFilesDiv">
             <AddFiles filePassFunc={(playlist)=>{
               let updateAudioBool = false;
@@ -217,7 +219,6 @@ class FrontComps extends React.Component {
         </div>
         <BackGroundPic playing={ this.state.playing } passFilterDig={ (n)=>{
             this.globalFilterDig = n;
-            console.log(this.globalFilterDig)
           }}/>
         <TrackName name={ this.state.trackName } />
         <div className="trackTimeInfo">
