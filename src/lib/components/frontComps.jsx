@@ -47,6 +47,7 @@ class FrontComps extends React.Component {
       updateAudio: true,
       shuffle: false
     };
+    this.globalFilterDig = 0;
     this.nextPlayingNow = (num, length) => {
       return (num+length)%length;
     }
@@ -214,7 +215,10 @@ class FrontComps extends React.Component {
               }}/>
           </div>
         </div>
-        <BackGroundPic playing={ this.state.playing }/>
+        <BackGroundPic playing={ this.state.playing } passFilterDig={ (n)=>{
+            this.globalFilterDig = n;
+            console.log(this.globalFilterDig)
+          }}/>
         <TrackName name={ this.state.trackName } />
         <div className="trackTimeInfo">
           <TrackCurrentTime
@@ -235,7 +239,7 @@ class FrontComps extends React.Component {
                 }
               }
             }/>
-          <PlayPauseButton playing={ this.state.playing } playingPassFunc={(playing)=>{
+          <PlayPauseButton filterDeg={ this.globalFilterDig } playing={ this.state.playing } playingPassFunc={(playing)=>{
               if (this.state.playlist.length != 0){
                 this.setState({playing: playing});
               }

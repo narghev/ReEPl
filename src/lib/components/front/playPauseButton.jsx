@@ -25,11 +25,11 @@ class PlayPauseButton extends React.Component {
   render(){
     if (this.state.playing){
       return(
-        <img className = 'playPauseButton' src={ this.pauseSrc } onClick={ this.clickHandler }/>
+        <img style={{filter: `hue-rotate(${this.props.filterDeg}deg)`}} className = 'playPauseButton' src={ this.pauseSrc } onClick={ this.clickHandler }/>
       )
     }
     return(
-      <img className = 'playPauseButton' src={ this.playSrc } onClick={ this.clickHandler } />
+      <img style={{filter: `hue-rotate(${this.props.filterDeg}deg)`}} className = 'playPauseButton' src={ this.playSrc } onClick={ this.clickHandler } />
     )
   }
 }
