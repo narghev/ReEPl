@@ -268,7 +268,7 @@ class FrontComps extends React.Component {
               }
             }/>
         </div>
-        <VolumeControl />
+        <VolumeControl filterDeg={ this.globalFilterDig } />
       </div>
     )
   }

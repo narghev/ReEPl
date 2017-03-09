@@ -17,6 +17,11 @@ class VolumeControl extends React.Component {
     return(
       <div className="volumeControl">
         <input onChange={ this.changeHandler } defaultValue="75" type="range" min="0" max="100" />
+        <style>
+          {
+          `.volumeControl input[type=range]::-webkit-slider-thumb{filter: hue-rotate(${this.props.filterDeg}deg);}`
+          }
+        </style>
       </div>
     )
   }
