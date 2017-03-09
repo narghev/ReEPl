@@ -14,6 +14,7 @@ import { AddFiles } from './front/addFiles.jsx';
 import { PlaylistButton } from './front/playlistButton.jsx';
 import Playlist from './playlist/playlist.jsx';
 import { Shuffle } from './front/shuffle.jsx';
+import { Replay } from './front/replay.jsx';
 
 export default
 class FrontComps extends React.Component {
@@ -33,7 +34,8 @@ class FrontComps extends React.Component {
         nowPlaying: 0,
         showPlaylist: false,
         updateAudio: true,
-        shuffle: false
+        shuffle: false,
+        replay: false
       };
     });
     this.state = {
@@ -45,7 +47,8 @@ class FrontComps extends React.Component {
       nowPlaying: 0,
       showPlaylist: false,
       updateAudio: true,
-      shuffle: false
+      shuffle: false,
+      replay: false
     };
     this.globalFilterDig = 0;
     this.nextPlayingNow = (num, length) => {
@@ -61,6 +64,10 @@ class FrontComps extends React.Component {
       }
       clearInterval(onededEventInterval);
       track.onended = () => {
+        if (this.state.replay){
+          this.setState({updateAudio: true});
+          return;
+        }
         if (this.state.shuffle){
           let nextPlaying = this.shuffle(this.state.playlist.length);
           if (nextPlaying === this.state.nowPlaying)
@@ -198,6 +205,12 @@ class FrontComps extends React.Component {
           <Shuffle shuffle={ this.state.shuffle } clickHandler={ ()=>{
             let shuffleBool = this.state.shuffle;
             this.setState({shuffle: !shuffleBool});
+          } }
+            filterDeg={ this.globalFilterDig }
+          />
+        <Replay replay={ this.state.shuffle } clickHandler={ ()=>{
+            let replayBool = this.state.replay;
+            this.setState({replay: !replayBool});
           } }
             filterDeg={ this.globalFilterDig }
           />
