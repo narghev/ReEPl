@@ -8,6 +8,6 @@ export const Replay = ({clickHandler, replay, filterDeg}) => {
     )
   }
   return (
-    <img className='replay' src='images/replay1.png' onClick={ clickHandler }></img>
+    <img className='replay' src='images/replay0.png' onClick={ clickHandler }></img>
   )
 }

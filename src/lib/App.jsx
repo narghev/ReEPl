@@ -19,6 +19,7 @@ import '../styles/playlistScreen.css';
 import '../styles/playlistContent.css';
 import '../styles/playlistHeader.css';
 import '../styles/shuffle.css';
+import '../styles/replay.css';
 
 import FrontComps from './components/frontComps.jsx';
 

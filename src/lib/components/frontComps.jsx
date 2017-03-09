@@ -202,15 +202,15 @@ class FrontComps extends React.Component {
               const nextShowPlaylistVal = !this.state.showPlaylist;
               this.setState({showPlaylist: nextShowPlaylistVal});
             }}/>
-          <Shuffle shuffle={ this.state.shuffle } clickHandler={ ()=>{
-            let shuffleBool = this.state.shuffle;
-            this.setState({shuffle: !shuffleBool});
+          <Replay replay={ this.state.replay } clickHandler={ ()=>{
+            let replayBool = this.state.replay;
+            this.setState({replay: !replayBool});
           } }
             filterDeg={ this.globalFilterDig }
           />
-        <Replay replay={ this.state.shuffle } clickHandler={ ()=>{
-            let replayBool = this.state.replay;
-            this.setState({replay: !replayBool});
+          <Shuffle shuffle={ this.state.shuffle } clickHandler={ ()=>{
+            let shuffleBool = this.state.shuffle;
+            this.setState({shuffle: !shuffleBool});
           } }
             filterDeg={ this.globalFilterDig }
           />
