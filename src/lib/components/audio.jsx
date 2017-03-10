@@ -32,6 +32,9 @@ class Audio extends React.Component {
   shouldComponentUpdate(nextProps, nextState){
     return nextProps.shoulUpdate;
   }
+  componentDidMount(){
+    initAnalyser();
+  }
   render(){
     return(
       <div>

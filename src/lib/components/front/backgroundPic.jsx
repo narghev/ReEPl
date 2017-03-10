@@ -10,9 +10,8 @@ class BackGroundPic extends React.Component {
     }
     this.filter = setInterval(()=>{
       let filterNow = this.state.filterDeg;
-      this.props.passFilterDig(filterNow+1);
-      this.setState({filterDeg: filterNow+1});
-      console.log(getAverageFrequency());
+      this.props.passFilterDig(filterNow+getAverageFrequency());
+      this.setState({filterDeg: filterNow+getAverageFrequency()});
    },50);
   }
   render(){
@@ -20,9 +19,8 @@ class BackGroundPic extends React.Component {
     if (this.props.playing) {
       this.filter = setInterval(()=>{
         let filterNow = (this.state.filterDeg%360);
-        this.props.passFilterDig(filterNow+1);
-        this.setState({filterDeg: filterNow+1});
-        console.log(getAverageFrequency());
+        this.props.passFilterDig(filterNow+getAverageFrequency());
+        this.setState({filterDeg: filterNow+getAverageFrequency()});
      },50);
     }
     return(
