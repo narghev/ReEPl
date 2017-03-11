@@ -13,7 +13,7 @@ class BackGroundCircle extends React.Component {
       let radiusNow = this.state.radius;
       let frequencyNow = getAverageFrequency();
       this.props.passFilterDig(filterNow+frequencyNow/3);
-      this.setState({filterDeg: filterNow+frequencyNow/3, radius: frequencyNow});
+      this.setState({filterDeg: filterNow+10, radius: frequencyNow*3});
    },50);
   }
   render(){
@@ -24,7 +24,7 @@ class BackGroundCircle extends React.Component {
         let radiusNow = this.state.radius;
         let frequencyNow = getAverageFrequency();
         this.props.passFilterDig(filterNow+frequencyNow/3);
-        this.setState({filterDeg: filterNow+frequencyNow/3, radius: frequencyNow});
+        this.setState({filterDeg: filterNow+10, radius: frequencyNow*3});
      },50);
     }
     return(
