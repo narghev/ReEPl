@@ -15,6 +15,7 @@ import { PlaylistButton } from './front/playlistButton.jsx';
 import Playlist from './playlist/playlist.jsx';
 import { Shuffle } from './front/shuffle.jsx';
 import { Replay } from './front/replay.jsx';
+import BackGroundCircle from './front/backgroundCircle.jsx';
 
 export default
 class FrontComps extends React.Component {
@@ -230,7 +231,12 @@ class FrontComps extends React.Component {
               }}/>
           </div>
         </div>
+        {/*
         <BackGroundPic playing={ this.state.playing } passFilterDig={ (n)=>{
+            this.globalFilterDig = n;
+          }}/>
+        */}
+        <BackGroundCircle playing={ this.state.playing } passFilterDig={ (n)=>{
             this.globalFilterDig = n;
           }}/>
         <TrackName name={ this.state.trackName } />

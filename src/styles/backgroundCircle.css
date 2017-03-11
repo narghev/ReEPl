@@ -1,0 +1,8 @@
+.backgroundCircle {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 65vh;
+  justify-content: center;
+  align-items: center;
+}
