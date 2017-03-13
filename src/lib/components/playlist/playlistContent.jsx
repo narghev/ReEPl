@@ -22,7 +22,7 @@ export const PlaylistContent = ({playlist, clickHandler, deleteClickHandler, sty
           })()
         }}>
         <p style={stylesP}>{ name }</p>
-        <img src="images/delete.png" onClick = { ()=> {
+        <img src="images/remove.png" onClick = { ()=> {
           change = false;
           deleteClickHandler(i);
         }}
