@@ -11,7 +11,7 @@ class Playlist extends React.Component {
   render(){
     if (this.props.show){
        return (
-         <div className="playlistScreen">
+         <div className="playlistScreen" style={{left: '0vw', transition: 'left 0.5s'}}>
            <div className="playlistHeader">
              <p className="playlistText">Playlist</p>
              <ClearPlaylist styleImg={{width: '4vw', height: '5vh'}} clickHandler={ this.props.clearPlaylistClickHandler } />
@@ -34,10 +34,10 @@ class Playlist extends React.Component {
        )
     }
     return (
-      <div className="playlistScreen" style={{width: "0vw", opacity: 1}}>
+      <div className="playlistScreen" style={{left: '-100vw', transition: 'left 0.5s'}}>
         <div className="playlistHeader">
-          <p className="playlistText" style={{fontSize: '0vw', transitionDelay: '0.1s', transition: 'font-size 0.5s'}}>Playlist</p>
-          <ClearPlaylist styleImg={{width: '0vw', height: '0vh', transitionDelay: '0s', opacity: 0}} clickHandler={ this.props.clearPlaylistClickHandler } />
+          <p className="playlistText">Playlist</p>
+          <ClearPlaylist styleImg={{width: '4vw', height: '5vh'}} clickHandler={ this.props.clearPlaylistClickHandler } />
         </div>
         <PlaylistContent playlist={ this.props.playlist } clickHandler= { (i, bool)=>{
            this.props.clickHandler(i, bool);
@@ -47,10 +47,10 @@ class Playlist extends React.Component {
                this.props.deleteClickHandler(i);
           }}
           stylesP= {
-            {fontSize: '0vw'}
+            {fontSize: '2.5vw'}
           }
           styleImg= {
-            {width: '0vw',height: '0vh'}
+            {width: '2.5vw',height: '3vh'}
           }
           />
       </div>

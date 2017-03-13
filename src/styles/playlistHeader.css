@@ -10,9 +10,6 @@
 .clearPlaylist img{
   width: 4vw;
   height: 5vh;
-  transition: width 0.75s, height 0.75s, opacity 0.25s;
-  transition-delay: 0.5s;
-  transition-timing-function: ease-out;
 }
 
 .playlistHeader {
