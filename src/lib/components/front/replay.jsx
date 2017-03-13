@@ -1,6 +1,9 @@
 import React from 'react';
 
-export const Replay = ({clickHandler, replay, filterDeg}) => {
+export const Replay = ({show, clickHandler, replay, filterDeg}) => {
+  if (show) {
+    return (<div></div>);
+  }
   if (replay){
     return (
       <img className='replay' style={{filter: `hue-rotate(${filterDeg}deg)`}}

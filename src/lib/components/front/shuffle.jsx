@@ -1,6 +1,9 @@
 import React from 'react';
 
-export const Shuffle = ({clickHandler, shuffle, filterDeg}) => {
+export const Shuffle = ({show, clickHandler, shuffle, filterDeg}) => {
+  if (show) {
+    return (<div></div>);
+  }
   if (shuffle){
     return (
       <img className='shuffle' style={{filter: `hue-rotate(${filterDeg}deg)`}}

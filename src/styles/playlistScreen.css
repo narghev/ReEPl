@@ -16,11 +16,3 @@
 .playlistScreen {
   transition: width 0.75s;
 }
-
-.playlistText {
-  color: #c6c6c6;
-  font-size: 5vw;
-  margin-top: 2vh;
-  margin-left: 6vw;
-  margin-bottom: 4vh;
-}
