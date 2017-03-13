@@ -22,23 +22,6 @@ class FrontComps extends React.Component {
   constructor(){
     super();
     let files = [];
-    getPlaylist().then((pl)=>{
-      if (!checkPlaylist(pl))
-        return;
-      files = pl;
-      this.state = {
-        playlist: files,
-        playing: !!files[0],
-        duration: 0,
-        currentTime: 0,
-        trackName: files[0] ? files[0].name : "",
-        nowPlaying: 0,
-        showPlaylist: false,
-        updateAudio: true,
-        shuffle: false,
-        replay: false
-      };
-    });
     this.state = {
       playlist: files,
       playing: !!files[0],
@@ -85,6 +68,25 @@ class FrontComps extends React.Component {
         });
       }
     },500);
+  }
+  componentWillMount(){
+    getPlaylist().then((pl)=>{
+      if (!checkPlaylist(pl))
+        return;
+      let files = pl;
+      this.setState({
+        playlist: files,
+        playing: !!files[0],
+        duration: 0,
+        currentTime: 0,
+        trackName: files[0] ? files[0].name : "",
+        nowPlaying: 0,
+        showPlaylist: false,
+        updateAudio: true,
+        shuffle: false,
+        replay: false
+      });
+    });
   }
   render(){
     return(
