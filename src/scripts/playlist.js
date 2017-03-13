@@ -24,7 +24,7 @@ const getPlaylist = () => {
 
 const checkPlaylist = (playlist) => {
   let result = true;
-  if (playlist.length === 0){
+  if (playlist.length === 0 || playlist[0] === undefined){
     return false;
   }
   for (let i=0; i < playlist.length; i++){
