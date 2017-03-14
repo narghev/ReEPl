@@ -1,6 +1,6 @@
 .bgEqualizer {
   border-top: 5px solid rgb(187, 25, 25);
-  border-radius: 1px 1px 0px 0px;
+  border-radius: 1px 1px 1px 1px;
   width: calc(100vw/102.4);
   margin-top: auto;
 }
