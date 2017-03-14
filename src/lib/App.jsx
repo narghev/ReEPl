@@ -21,6 +21,7 @@ import '../styles/playlistContent.css';
 import '../styles/playlistHeader.css';
 import '../styles/shuffle.css';
 import '../styles/replay.css';
+import '../styles/bgEqualizer.css';
 
 import FrontComps from './components/frontComps.jsx';
 

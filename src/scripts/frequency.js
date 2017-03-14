@@ -28,3 +28,15 @@ const getAverageFrequency = ()=> {
     return 1;
   return (result/freqByteData.length);
 }
+
+const getFrequencyArray = ()=> {
+  if (analyser === undefined){
+    return 1;
+  }
+  freqByteData = new Uint8Array(analyser.frequencyBinCount);
+  analyser.getByteFrequencyData(freqByteData);
+  if (!freqByteData[0]){
+    return [];
+  }
+  return freqByteData;
+}
