@@ -202,7 +202,7 @@ class FrontComps extends React.Component {
                   } catch(e){}
                 }
               }
-              chnageAnimation = {
+              changeAnimation = {
                 ()=>{
                   let nextAnimation = (this.state.animationNumber+1)%3;
                   window.animationNumber = nextAnimation;
@@ -320,7 +320,14 @@ class FrontComps extends React.Component {
               }
             }/>
         </div>
-        <VolumeControl filterDeg={ this.globalFilterDig } />
+        <VolumeControl filterDeg={
+          (()=>{
+            if (this.state.animationNumber === 2)
+              return 0;
+            return (this.globalFilterDig);
+          })()
+        }
+        />
       </div>
     )
   }
