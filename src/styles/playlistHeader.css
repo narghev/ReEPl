@@ -3,7 +3,6 @@
   height: 5vh;
   position: relative;
   top: 1.8vh;
-  left: 90vw;
   z-index: 4;
 }
 
@@ -15,4 +14,11 @@
 .playlistHeader {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
+  margin-top: 40px;
+}
+
+.playlistHeader img {
+  width: 5vw;
+  height: 5vw;
 }

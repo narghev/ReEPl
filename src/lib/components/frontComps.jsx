@@ -33,7 +33,8 @@ class FrontComps extends React.Component {
       showPlaylist: false,
       updateAudio: true,
       shuffle: false,
-      replay: false
+      replay: false,
+      animationNumber: 0
     };
     this.globalFilterDig = 0;
     this.nextPlayingNow = (num, length) => {
@@ -200,6 +201,12 @@ class FrontComps extends React.Component {
                   } catch(e){}
                 }
               }
+              chnageAnimation = {
+                ()=>{
+                  let nextAnimation = (this.state.animationNumber+1)%3;
+                  this.setState({animationNumber: nextAnimation, showPlaylist: false});
+                }
+              }
         />
         <div className="topButtons">
           <PlaylistButton clickHandler={()=>{
@@ -234,15 +241,35 @@ class FrontComps extends React.Component {
               }}/>
           </div>
         </div>
-        {/*
-        <BackGroundPic playing={ this.state.playing } passFilterDig={ (n)=>{
-            this.globalFilterDig = n;
-          }}/>
-        <BackGroundCircle playing={ this.state.playing } passFilterDig={ (n)=>{
-            this.globalFilterDig = n;
-          }}/>
-        */}
-        <BackGroundEqualizer playing={ this.state.playing } />
+        {
+          (()=>{
+            switch (this.state.animationNumber)
+            {
+              case 0:{
+                return (
+                  <BackGroundPic playing={ this.state.playing } passFilterDig={ (n)=>{
+                      this.globalFilterDig = n;
+                    }}/>
+                )
+                break;
+              }
+              case 1:{
+                return (
+                  <BackGroundCircle playing={ this.state.playing } passFilterDig={ (n)=>{
+                      this.globalFilterDig = n;
+                    }}/>
+                )
+                break;
+              }
+              case 2:{
+                return (
+                    <BackGroundEqualizer playing={ this.state.playing } />
+                )
+                break;
+              }
+            }
+          })()
+        }
         <TrackName name={ this.state.trackName } />
         <div className="trackTimeInfo">
           <TrackCurrentTime
