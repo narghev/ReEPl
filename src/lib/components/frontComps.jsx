@@ -103,10 +103,17 @@ class FrontComps extends React.Component {
             for (let i=0; i < playlist.length; i++)
               nextPlaylist.push(playlist[i]);
             saveFile(nextPlaylist);
-            this.setState({playlist: nextPlaylist,
-              playing: true,
-              trackName: this.state.playlist[this.state.nowPlaying].name,
-              updateAudio: updateAudioBool});
+            if (this.state.playlist.length === 0){
+              this.setState({playlist: nextPlaylist,
+                playing: true,
+                trackName: this.state.playlist[this.state.nowPlaying].name,
+                updateAudio: updateAudioBool});
+            }
+            else {
+              this.setState({playlist: nextPlaylist,
+                trackName: this.state.playlist[this.state.nowPlaying].name,
+                updateAudio: updateAudioBool});
+            }
           }
           }}/>
         <Audio shoulUpdate={ this.state.updateAudio } trackTimePassFunc={(duration, currentTime)=>{
@@ -236,10 +243,17 @@ class FrontComps extends React.Component {
               for (let i=0; i < playlist.length; i++)
                 nextPlaylist.push(playlist[i]);
               saveFile(nextPlaylist);
-              this.setState({playlist: nextPlaylist,
-                playing: true,
-                trackName: this.state.playlist[this.state.nowPlaying].name,
-                updateAudio: updateAudioBool});
+              if (this.state.playlist.length === 0){
+                this.setState({playlist: nextPlaylist,
+                  playing: true,
+                  trackName: this.state.playlist[this.state.nowPlaying].name,
+                  updateAudio: updateAudioBool});
+              }
+              else {
+                this.setState({playlist: nextPlaylist,
+                  trackName: this.state.playlist[this.state.nowPlaying].name,
+                  updateAudio: updateAudioBool});
+              }
               }}/>
           </div>
         </div>

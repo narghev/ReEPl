@@ -5,4 +5,5 @@
   height: 65vh;
   justify-content: center;
   align-items: center;
+  z-index: -1;
 }

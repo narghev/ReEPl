@@ -8,4 +8,5 @@
 .backgroundPic {
   display: flex;
   flex-direction: row;
+  z-index: -1;
 }

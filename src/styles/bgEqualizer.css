@@ -3,4 +3,5 @@
   border-radius: 1px 1px 1px 1px;
   width: calc(100vw/102.4);
   margin-top: auto;
+  z-index: -1;
 }
