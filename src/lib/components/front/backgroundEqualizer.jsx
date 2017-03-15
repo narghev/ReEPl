@@ -8,6 +8,10 @@ class BackGroundCircle extends React.Component {
       frequencies: []
     }
     this.animation = setInterval(()=>{
+      if (window.animationNumber != 2){
+        clearInterval(this.animation);
+        return;
+      }
       let frequencyArray = getFrequencyArray();
       this.setState({frequencies: frequencyArray});
    },50);
@@ -23,6 +27,10 @@ class BackGroundCircle extends React.Component {
     clearInterval(this.animation);
     if (this.props.playing) {
       this.animation = setInterval(()=>{
+        if (window.animationNumber != 2){
+          clearInterval(this.animation);
+          return;
+        }
         let frequencyArray = getFrequencyArray();
         this.setState({frequencies: frequencyArray});
      },50);

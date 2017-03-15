@@ -43,6 +43,7 @@ class FrontComps extends React.Component {
     this.shuffle = (length) => {
       return Math.floor(Math.random()*length);
     }
+    window.animationNumber = 0;
     const onededEventInterval = setTimeout(()=>{
       const track = document.getElementById('track');
       if (track === null){
@@ -204,6 +205,7 @@ class FrontComps extends React.Component {
               chnageAnimation = {
                 ()=>{
                   let nextAnimation = (this.state.animationNumber+1)%3;
+                  window.animationNumber = nextAnimation;
                   this.setState({animationNumber: nextAnimation, showPlaylist: false});
                 }
               }

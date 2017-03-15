@@ -9,6 +9,10 @@ class BackGroundCircle extends React.Component {
       filterDeg: 0
     }
     this.animation = setInterval(()=>{
+      if (window.animationNumber != 1){
+        clearInterval(this.animation);
+        return;
+      }
       let filterNow = this.state.filterDeg;
       let radiusNow = this.state.radius;
       let frequencyNow = getAverageFrequency();
@@ -20,6 +24,10 @@ class BackGroundCircle extends React.Component {
     clearInterval(this.animation);
     if (this.props.playing) {
       this.animation = setInterval(()=>{
+        if (window.animationNumber != 1){
+          clearInterval(this.animation);
+          return;
+        }
         let filterNow = this.state.filterDeg;
         let radiusNow = this.state.radius;
         let frequencyNow = getAverageFrequency();

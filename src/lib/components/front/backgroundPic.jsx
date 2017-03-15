@@ -9,6 +9,10 @@ class BackGroundPic extends React.Component {
       filterDeg: 0
     }
     this.filter = setInterval(()=>{
+      if (window.animationNumber != 0){
+        clearInterval(this.filter);
+        return;
+      }
       let filterNow = this.state.filterDeg;
       this.props.passFilterDig(filterNow+getAverageFrequency()/3);
       this.setState({filterDeg: filterNow+getAverageFrequency()/3});
@@ -18,6 +22,10 @@ class BackGroundPic extends React.Component {
     clearInterval(this.filter);
     if (this.props.playing) {
       this.filter = setInterval(()=>{
+        if (window.animationNumber != 0){
+          clearInterval(this.filter);
+          return;
+        }
         let filterNow = (this.state.filterDeg%360);
         this.props.passFilterDig(filterNow+getAverageFrequency()/3);
         this.setState({filterDeg: filterNow+getAverageFrequency()/3});
