@@ -87,7 +87,8 @@ class FrontComps extends React.Component {
         showPlaylist: false,
         updateAudio: true,
         shuffle: false,
-        replay: false
+        replay: false,
+        animationNumber: 0
       });
     });
   }
@@ -342,6 +343,22 @@ class FrontComps extends React.Component {
           })()
         }
         />
+      {
+        (()=>{
+          if (this.state.animationNumber === 2){
+            return (
+              <style>
+                {
+                  `.volumeControl input[type=range]::-webkit-slider-thumb { background: rgb(187, 25, 25); }`
+                }
+              </style>
+            )
+          }
+          return (
+            <style></style>
+          )
+        })()
+      }
       </div>
     )
   }
