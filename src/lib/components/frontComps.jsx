@@ -44,6 +44,7 @@ class FrontComps extends React.Component {
       return Math.floor(Math.random()*length);
     }
     window.animationNumber = 0;
+    this.animations = 3;
     const onededEventInterval = setTimeout(()=>{
       const track = document.getElementById('track');
       if (track === null){
@@ -212,7 +213,7 @@ class FrontComps extends React.Component {
               }
               changeAnimation = {
                 ()=>{
-                  let nextAnimation = (this.state.animationNumber+1)%3;
+                  let nextAnimation = (this.state.animationNumber+1)%(this.animations);
                   window.animationNumber = nextAnimation;
                   this.setState({animationNumber: nextAnimation, showPlaylist: false});
                 }
