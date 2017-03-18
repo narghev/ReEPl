@@ -17,6 +17,7 @@ import { Shuffle } from './front/shuffle.jsx';
 import { Replay } from './front/replay.jsx';
 import BackGroundCircle from './front/backgroundCircle.jsx';
 import BackGroundEqualizer from './front/backgroundEqualizer.jsx';
+import { BackGroundWaves } from './front/backgroundWaves.jsx';
 
 export default
 class FrontComps extends React.Component {
@@ -34,7 +35,7 @@ class FrontComps extends React.Component {
       updateAudio: true,
       shuffle: false,
       replay: false,
-      animationNumber: 0
+      animationNumber: 3
     };
     this.globalFilterDig = 0;
     this.nextPlayingNow = (num, length) => {
@@ -43,8 +44,8 @@ class FrontComps extends React.Component {
     this.shuffle = (length) => {
       return Math.floor(Math.random()*length);
     }
-    window.animationNumber = 0;
-    this.animations = 3;
+    window.animationNumber = 3;
+    this.animations = 4;
     const onededEventInterval = setTimeout(()=>{
       const track = document.getElementById('track');
       if (track === null){
@@ -89,7 +90,7 @@ class FrontComps extends React.Component {
         updateAudio: true,
         shuffle: false,
         replay: false,
-        animationNumber: 0
+        animationNumber: 3
       });
     });
   }
@@ -245,17 +246,10 @@ class FrontComps extends React.Component {
               for (let i=0; i < playlist.length; i++)
                 nextPlaylist.push(playlist[i]);
               saveFile(nextPlaylist);
-              if (this.state.playlist.length === 0){
-                this.setState({playlist: nextPlaylist,
-                  playing: true,
-                  trackName: this.state.playlist[this.state.nowPlaying].name,
-                  updateAudio: updateAudioBool});
-              }
-              else {
-                this.setState({playlist: nextPlaylist,
-                  trackName: this.state.playlist[this.state.nowPlaying].name,
-                  updateAudio: updateAudioBool});
-              }
+              this.setState({playlist: nextPlaylist,
+                playing: true,
+                trackName: this.state.playlist[this.state.nowPlaying].name,
+                updateAudio: updateAudioBool});
               }}/>
           </div>
         </div>
@@ -282,6 +276,12 @@ class FrontComps extends React.Component {
               case 2:{
                 return (
                     <BackGroundEqualizer playing={ this.state.playing } />
+                )
+                break;
+              }
+              case 3:{
+                return (
+                    <BackGroundWaves playing={ this.state.playing } />
                 )
                 break;
               }
