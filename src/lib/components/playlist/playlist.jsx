@@ -36,7 +36,6 @@ class Playlist extends React.Component {
     return (
       <div className="playlistScreen" style={{left: '-100vw', transition: 'left 0.5s'}}>
         <div className="playlistHeader">
-          <p className="playlistText">Playlist</p>
           <img src="images/animationChange.png" onClick={ this.props.changeAnimation } />
           <ClearPlaylist styleImg={{width: '4vw', height: '5vh'}} clickHandler={ this.props.clearPlaylistClickHandler } />
         </div>
