@@ -23,6 +23,7 @@ export default
 class FrontComps extends React.Component {
   constructor(){
     super();
+    window.animationNumber = 0;
     let files = [];
     this.state = {
       playlist: files,
@@ -35,7 +36,7 @@ class FrontComps extends React.Component {
       updateAudio: true,
       shuffle: false,
       replay: false,
-      animationNumber: 3
+      animationNumber: window.animationNumber
     };
     this.globalFilterDig = 0;
     this.nextPlayingNow = (num, length) => {
@@ -44,7 +45,6 @@ class FrontComps extends React.Component {
     this.shuffle = (length) => {
       return Math.floor(Math.random()*length);
     }
-    window.animationNumber = 3;
     this.animations = 4;
     const onededEventInterval = setTimeout(()=>{
       const track = document.getElementById('track');
@@ -90,7 +90,7 @@ class FrontComps extends React.Component {
         updateAudio: true,
         shuffle: false,
         replay: false,
-        animationNumber: 3
+        animationNumber: window.animationNumber
       });
     });
   }
@@ -338,7 +338,7 @@ class FrontComps extends React.Component {
         </div>
         <VolumeControl filterDeg={
           (()=>{
-            if (this.state.animationNumber === 2)
+            if (this.state.animationNumber === 2 || this.state.animationNumber === 3)
               return 0;
             return (this.globalFilterDig);
           })()
@@ -346,7 +346,7 @@ class FrontComps extends React.Component {
         />
       {
         (()=>{
-          if (this.state.animationNumber === 2){
+          if (this.state.animationNumber === 2 || this.state.animationNumber === 3){
             return (
               <style>
                 {

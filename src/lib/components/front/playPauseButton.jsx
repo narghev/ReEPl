@@ -25,7 +25,7 @@ class PlayPauseButton extends React.Component {
     this.props.playingPassFunc(!this.state.playing);
   }
   render(){
-    if (window.animationNumber === 2){
+    if (window.animationNumber === 2 || window.animationNumber == 3){
       if (this.state.playing){
         return(
           <img className = 'playPauseButton' src={ this.pauseSrcWhite } onClick={ this.clickHandler }/>

@@ -4,7 +4,7 @@ export const Replay = ({show, clickHandler, replay, filterDeg}) => {
   if (show) {
     return (<div></div>);
   }
-  if (replay && window.animationNumber === 2){
+  if (replay && (window.animationNumber === 2 || window.animationNumber === 3)){
     return (
       <img className='replay'
        src='images/replay1red.png' onClick={ clickHandler }></img>

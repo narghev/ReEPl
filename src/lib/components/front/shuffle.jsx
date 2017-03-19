@@ -4,7 +4,7 @@ export const Shuffle = ({show, clickHandler, shuffle, filterDeg}) => {
   if (show) {
     return (<div></div>);
   }
-  if (shuffle && window.animationNumber === 2){
+  if (shuffle && (window.animationNumber === 2 || window.animationNumber === 3)){
     return (
       <img className='shuffle'
        src='images/shuffle1red.png' onClick={ clickHandler }></img>
