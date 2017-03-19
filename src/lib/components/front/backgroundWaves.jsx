@@ -5,8 +5,6 @@ export const BackGroundWaves = () => {
     let animation = setInterval(()=>{
       if (window.animationNumber != 3){
         clearInterval(animation);
-        clearInterval(ctxClearInterval);
-        clearInterval(depthChangeInterval);
         return;
       }
       let frequencyNow = getAverageFrequency();

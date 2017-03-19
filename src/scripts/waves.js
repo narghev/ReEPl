@@ -3,21 +3,23 @@ let ctx;
 let canvasW;
 let canvasH;
 let depthDirection = 1;
+let firstTime = true;
 
 const initCanvas = () => {
-  if (canvas !== undefined)
-    return;
   canvas = document.getElementById('backgroundWaves');
   ctx = canvas.getContext('2d');
   ctx.strokeStyle = '#bb1919';
   canvasH = canvas.height;
   canvasW = canvas.width;
-  ctxClearInterval = setInterval(()=>{
-    ctx.clearRect(0,0,canvasW, canvasH);
-  },75);
-  depthChangeInterval = setInterval(()=>{
-    depthDirection *= -1;
-  },15000);
+  if (firstTime){
+    ctxClearInterval = setInterval(()=>{
+      ctx.clearRect(0,0,canvasW, canvasH);
+    },75);
+    depthChangeInterval = setInterval(()=>{
+      depthDirection *= -1;
+    },15000);
+    firstTime = false;
+  }
 }
 
 const drawOnCanvas = (depth) => {
