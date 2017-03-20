@@ -14,7 +14,7 @@ const initCanvas = () => {
   if (firstTime){
     ctxClearInterval = setInterval(()=>{
       ctx.clearRect(0,0,canvasW, canvasH);
-    },75);
+    },50);
     depthChangeInterval = setInterval(()=>{
       depthDirection *= -1;
     },15000);
