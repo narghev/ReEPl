@@ -23,6 +23,7 @@ class Menu extends React.Component {
     this.state = {show: false};
   }
   render(){
+    console.log(this.props.playlist)
      return (
        <div className="menu" style={(()=>{
          if (this.props.show)
@@ -35,7 +36,13 @@ class Menu extends React.Component {
          <MuiThemeProvider muiTheme={muiTheme}>
            <Tabs className="tabs" initialSelectedIndex = { 0 } >
              <Tab label = "Playlist">
-               <h1>p</h1>
+               <Playlist
+                 playlist={ this.props.playlist }
+                 clickHandler={ this.props.clickHandler }
+                 deleteClickHandler={ this.props.deleteClickHandler }
+                 clearPlaylistClickHandler= { this.props.clearPlaylistClickHandler }
+                 changeAnimation= { this.props.changeAnimation }
+               />
              </Tab>
              <Tab label = "Options">
                <h1>o</h1>

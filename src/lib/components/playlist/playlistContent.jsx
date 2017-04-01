@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const PlaylistContent = ({playlist, clickHandler, deleteClickHandler, stylesP, styleImg}) => {
+export const PlaylistContent = ({playlist, clickHandler, deleteClickHandler}) => {
   let content = [];
   let change = true;
   for (let i=0; i < playlist.length; i++){
@@ -17,22 +17,23 @@ export const PlaylistContent = ({playlist, clickHandler, deleteClickHandler, sty
         style={{
           backgroundColor: (()=>{
             if (i%2 === 0)
-              return 'rgb(82, 82, 82)';
-            return '#191919';
+              return '#212121';
+            return "#424242";
           })()
         }}>
-        <p style={stylesP}>{ name }</p>
+        <p>{ name }</p>
+        {/*
         <img src="images/remove.png" onClick = { ()=> {
           change = false;
           deleteClickHandler(i);
         }}
         style={styleImg}
-        />
+      />*/}
       </div>
     )
   }
   return(
-    <div style={{overflowY: 'scroll', overflowX: 'hidden', marginTop: '4vh'}}>
+    <div className="songs">
       {
         content
       }
