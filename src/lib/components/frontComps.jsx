@@ -12,7 +12,7 @@ import { TrackCurrentTime } from './front/trackCurrentTime.jsx';
 import BackGroundPic from './front/backgroundPic.jsx';
 import { AddFiles } from './front/addFiles.jsx';
 import { PlaylistButton } from './front/playlistButton.jsx';
-import Playlist from './playlist/playlist.jsx';
+import Menu from './menu/menu.jsx';
 import { Shuffle } from './front/shuffle.jsx';
 import { Replay } from './front/replay.jsx';
 import BackGroundCircle from './front/backgroundCircle.jsx';
@@ -33,7 +33,7 @@ class FrontComps extends React.Component {
       currentTime: 0,
       trackName: files[0] ? files[0].name : "",
       nowPlaying: 0,
-      showPlaylist: false,
+      showMenu: false,
       updateAudio: true,
       shuffle: false,
       replay: false,
@@ -93,14 +93,14 @@ class FrontComps extends React.Component {
           currentTime: 0,
           trackName: files[0] ? files[0].name : "",
           nowPlaying: 0,
-          showPlaylist: false,
+          showMenu: false,
           updateAudio: true,
           shuffle: false,
           replay: false,
           animationNumber: window.animationNumber
         });
         this.setState({playing: true});
-      }, 1000);
+      }, 500);
       })
   }
   render(){
@@ -144,13 +144,15 @@ class FrontComps extends React.Component {
             this.setState({updateAudio: false});
           }}
         />
-      <Playlist playlist={ this.state.playlist } show={ this.state.showPlaylist } clickHandler={ (trackN, change)=>{
+        <Menu show={ this.state.showMenu }/>
+        {/*
+        <Playlist playlist={ this.state.playlist } show={ this.state.showMenu } clickHandler={ (trackN, change)=>{
                 if (change){
                   this.setState({nowPlaying: trackN,
                     trackName: this.state.playlist[trackN].name,
                     playing: true,
                     updateAudio: true,
-                    showPlaylist: false
+                    showMenu: false
                   });
                 }
               }
@@ -165,7 +167,7 @@ class FrontComps extends React.Component {
                   currentTime: 0,
                   trackName: "",
                   nowPlaying: 0,
-                  showPlaylist: false,
+                  showMenu: false,
                   updateAudio: true
                 });
                 try {
@@ -217,7 +219,7 @@ class FrontComps extends React.Component {
                     currentTime: 0,
                     trackName: "",
                     nowPlaying: 0,
-                    showPlaylist: false,
+                    showMenu: false,
                     updateAudio: true
                   });
                   try {
@@ -233,22 +235,23 @@ class FrontComps extends React.Component {
                 ()=>{
                   let nextAnimation = (this.state.animationNumber+1)%(this.animations);
                   window.animationNumber = nextAnimation;
-                  this.setState({animationNumber: nextAnimation, showPlaylist: false});
+                  this.setState({animationNumber: nextAnimation, showMenu: false});
                 }
               }
         />
+        */}
         <div className="topButtons">
           <PlaylistButton clickHandler={()=>{
-              const nextShowPlaylistVal = !this.state.showPlaylist;
-              this.setState({showPlaylist: nextShowPlaylistVal});
+              const nextShowPlaylistVal = !this.state.showMenu;
+              this.setState({showMenu: nextShowPlaylistVal});
             }}/>
-          <Replay show={this.state.showPlaylist} replay={ this.state.replay } clickHandler={ ()=>{
+          <Replay show={this.state.showMenu} replay={ this.state.replay } clickHandler={ ()=>{
             let replayBool = this.state.replay;
             this.setState({replay: !replayBool});
           } }
             filterDeg={ this.globalFilterDig }
           />
-          <Shuffle show={this.state.showPlaylist} shuffle={ this.state.shuffle } clickHandler={ ()=>{
+          <Shuffle show={this.state.showMenu} shuffle={ this.state.shuffle } clickHandler={ ()=>{
             let shuffleBool = this.state.shuffle;
             this.setState({shuffle: !shuffleBool});
           } }

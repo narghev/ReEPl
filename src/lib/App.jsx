@@ -23,6 +23,7 @@ import '../styles/shuffle.css';
 import '../styles/replay.css';
 import '../styles/bgEqualizer.css';
 import '../styles/backgroundWaves.css';
+import '../styles/menu.css';
 
 import FrontComps from './components/frontComps.jsx';
 
