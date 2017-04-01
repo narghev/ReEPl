@@ -144,7 +144,12 @@ class FrontComps extends React.Component {
             this.setState({updateAudio: false});
           }}
         />
-        <Menu show={ this.state.showMenu }/>
+        <Menu
+          show={ this.state.showMenu }
+          hideMenu={()=>{
+            this.setState({showMenu: false});
+          }}
+        />
         {/*
         <Playlist playlist={ this.state.playlist } show={ this.state.showMenu } clickHandler={ (trackN, change)=>{
                 if (change){
