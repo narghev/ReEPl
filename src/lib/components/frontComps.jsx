@@ -26,6 +26,7 @@ class FrontComps extends React.Component {
     window.animationNumber = 0;
     let files = [];
     this.state = {
+      loadStatus: 'loading',
       playlist: files,
       playing: !!files[0],
       duration: 0,
@@ -76,25 +77,40 @@ class FrontComps extends React.Component {
   }
   componentWillMount(){
     getPlaylist().then((pl)=>{
-      if (!checkPlaylist(pl))
+      if (!checkPlaylist(pl) || pl.length === 0){
+        this.setState({
+          loadStatus: 'ready'
+        });
         return;
+      }
       let files = pl;
-      this.setState({
-        playlist: files,
-        playing: !!files[0],
-        duration: 0,
-        currentTime: 0,
-        trackName: files[0] ? files[0].name : "",
-        nowPlaying: 0,
-        showPlaylist: false,
-        updateAudio: true,
-        shuffle: false,
-        replay: false,
-        animationNumber: window.animationNumber
-      });
-    });
+      setTimeout(()=>{
+        this.setState({
+          loadStatus: 'ready',
+          playlist: files,
+          playing: !!files[0],
+          duration: 0,
+          currentTime: 0,
+          trackName: files[0] ? files[0].name : "",
+          nowPlaying: 0,
+          showPlaylist: false,
+          updateAudio: true,
+          shuffle: false,
+          replay: false,
+          animationNumber: window.animationNumber
+        });
+      }, 1000);
+      })
   }
   render(){
+    if (this.state.loadStatus === 'loading'){
+      return (
+        <div>
+          <img src="images/loading.gif" />
+          <link rel="stylesheet" href="./styles/loadingScreen.css" />
+        </div>
+      )
+    }
     return(
       <div className="screen">
         <DropOnMe filePassFunc={(playlist)=>{
