@@ -10,6 +10,7 @@ var config = {
     path: OUTPUT,
     filename: "app.js"
   },
+	target: 'electron',
   module: {
       loaders: [
          {

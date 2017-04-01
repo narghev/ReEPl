@@ -27,3 +27,16 @@
   margin-top: auto;
   margin-bottom: auto;
 }
+
+.options .footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.options .footer div {
+  margin-right: 5%;
+}
