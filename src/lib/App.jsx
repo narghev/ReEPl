@@ -21,6 +21,7 @@ import '../styles/replay.css';
 import '../styles/bgEqualizer.css';
 import '../styles/backgroundWaves.css';
 import '../styles/menu.css';
+import '../styles/options.css';
 
 import FrontComps from './components/frontComps.jsx';
 

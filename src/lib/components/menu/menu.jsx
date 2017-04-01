@@ -1,5 +1,6 @@
 import React from 'react';
 import Playlist from '../playlist/playlist.jsx';
+import Options from './options.jsx';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -23,7 +24,6 @@ class Menu extends React.Component {
     this.state = {show: false};
   }
   render(){
-    console.log(this.props.playlist)
      return (
        <div className="menu" style={(()=>{
          if (this.props.show)
@@ -40,12 +40,13 @@ class Menu extends React.Component {
                  playlist={ this.props.playlist }
                  clickHandler={ this.props.clickHandler }
                  deleteClickHandler={ this.props.deleteClickHandler }
-                 clearPlaylistClickHandler= { this.props.clearPlaylistClickHandler }
-                 changeAnimation= { this.props.changeAnimation }
                />
              </Tab>
              <Tab label = "Options">
-               <h1>o</h1>
+               <Options
+                 clearPlaylistClickHandler= { this.props.clearPlaylistClickHandler }
+                 changeAnimation= { this.props.changeAnimation }
+               />
              </Tab>
            </Tabs>
          </MuiThemeProvider>
