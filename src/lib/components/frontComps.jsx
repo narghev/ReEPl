@@ -99,6 +99,7 @@ class FrontComps extends React.Component {
           replay: false,
           animationNumber: window.animationNumber
         });
+        this.setState({playing: true});
       }, 1000);
       })
   }
