@@ -3,6 +3,7 @@ import IconButton from 'material-ui/IconButton';
 import Code from 'material-ui/svg-icons/action/code';
 import Toggle from 'material-ui/Toggle';
 import { goToCodeLink } from '../../../scripts/links.js';
+import Snackbar from 'material-ui/Snackbar';
 
 const styles = {
   block: {
@@ -30,6 +31,26 @@ const styles = {
 
 export default
 class Options extends React.Component {
+  constructor(){
+    super();
+    this.state = {
+      shuffleBarShow: false,
+      replayBarShow: false
+    }
+  }
+
+  toggleReplay = () => {
+      const replayBool = this.state.replayBarShow;
+      this.setState({replayBarShow: !replayBool});
+      this.props.toggleReplay();
+  }
+
+  toggleShuffle = () => {
+      const shuffleBool = this.state.shuffleBarShow;
+      this.setState({shuffleBarShow: !shuffleBool});
+      this.props.toggleShuffle();
+  }
+
   render(){
     return(
       <div className='options'>
@@ -53,7 +74,7 @@ class Options extends React.Component {
               trackSwitchedStyle={styles.trackSwitched}
               labelStyle={styles.labelStyle}
               defaultToggled={this.props.shuffle}
-              onToggle={this.props.toggleShuffle}
+              onToggle={this.toggleShuffle}
             />
           </div>
           <div className="replay">
@@ -65,7 +86,7 @@ class Options extends React.Component {
               trackSwitchedStyle={styles.trackSwitched}
               labelStyle={styles.labelStyle}
               defaultToggled={this.props.replay}
-              onToggle={this.props.toggleReplay}
+              onToggle={this.toggleReplay}
             />
           </div>
         </div>
@@ -76,6 +97,20 @@ class Options extends React.Component {
             </IconButton>
           </div>
         </div>
+        <Snackbar
+          open={this.state.shuffleBarShow}
+          message={`Shuffle Toggled ${this.props.shuffle ? 'On' : 'Off'}`}
+          autoHideDuration={3000}
+          onRequestClose={()=>{this.setState({shuffleBarShow: false})}}
+          contentStyle={{color: '#FFFDE7'}}
+        />
+        <Snackbar
+          open={this.state.replayBarShow}
+          message={`Replay Toggled ${this.props.replay ? 'On' : 'Off'}`}
+          autoHideDuration={3000}
+          onRequestClose={()=>{this.setState({replayBarShow: false})}}
+          contentStyle={{color: '#FFFDE7'}}
+        />
       </div>
     )
   }
