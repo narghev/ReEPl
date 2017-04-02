@@ -4,6 +4,8 @@
   justify-content: center;
   margin-bottom: 2vh;
   height: 5vh;
+  font-family: sans-serif;
+  color: '#FFFDE7';
 }
 
 .trackName p {
