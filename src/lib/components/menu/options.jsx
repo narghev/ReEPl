@@ -1,8 +1,32 @@
 import React from 'react';
 import IconButton from 'material-ui/IconButton';
-import BugReport from 'material-ui/svg-icons/action/bug-report';
 import Code from 'material-ui/svg-icons/action/code';
+import Toggle from 'material-ui/Toggle';
 import { goToCodeLink } from '../../../scripts/links.js';
+
+const styles = {
+  block: {
+    maxWidth: 250,
+  },
+  toggle: {
+    marginBottom: 16,
+  },
+  thumbOff: {
+    backgroundColor: 'rgba(248, 192, 66, 1)',
+  },
+  trackOff: {
+    backgroundColor: '#FFFDE7',
+  },
+  thumbSwitched: {
+    backgroundColor: '#FFEE58',
+  },
+  trackSwitched: {
+    backgroundColor: '#f8c042',
+  },
+  labelStyle: {
+    color: '#FFFDE7',
+  },
+};
 
 export default
 class Options extends React.Component {
@@ -17,6 +41,28 @@ class Options extends React.Component {
           <div>
             <span>Clear the playlist</span>
             <img src="images/delete.svg" onClick={ this.props.clearPlaylistClickHandler }/>
+          </div>
+        </div>
+        <div className="playerOptions">
+          <div className="shuffle">
+            <Toggle
+              label="Shuffle"
+              thumbStyle={styles.thumbOff}
+              trackStyle={styles.trackOff}
+              thumbSwitchedStyle={styles.thumbSwitched}
+              trackSwitchedStyle={styles.trackSwitched}
+              labelStyle={styles.labelStyle}
+            />
+          </div>
+          <div className="replay">
+            <Toggle
+              label="Replay"
+              thumbStyle={styles.thumbOff}
+              trackStyle={styles.trackOff}
+              thumbSwitchedStyle={styles.thumbSwitched}
+              trackSwitchedStyle={styles.trackSwitched}
+              labelStyle={styles.labelStyle}
+            />
           </div>
         </div>
         <div className="footer">

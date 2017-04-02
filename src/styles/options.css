@@ -22,7 +22,7 @@
   margin-top: auto;
   margin-bottom: auto;
   margin-left: 2%;
-  font-size: 120%;
+  font-size: 20px;
   font-family: sans-serif;
 }
 
@@ -43,4 +43,15 @@
 
 .options .footer div {
   margin-right: 5%;
+}
+
+.playerOptions {
+  margin-top: 5%;
+  padding-left: 7%;
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
+.shuffle {
+  margin-bottom: 2%;
 }
