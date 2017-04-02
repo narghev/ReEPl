@@ -46,6 +46,8 @@ class Menu extends React.Component {
                <Options
                  clearPlaylistClickHandler= { this.props.clearPlaylistClickHandler }
                  changeAnimation= { this.props.changeAnimation }
+                 shuffle = { this.props.shuffle }
+                 replay = { this.props.replay }
                />
              </Tab>
            </Tabs>
