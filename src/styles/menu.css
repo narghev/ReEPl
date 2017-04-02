@@ -10,6 +10,7 @@
   z-index: 2;
   transition: left 0.5s;
   overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .menu {

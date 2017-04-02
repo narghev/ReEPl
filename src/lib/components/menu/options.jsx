@@ -21,7 +21,7 @@ class Options extends React.Component {
         </div>
         <div className="footer">
           <div onClick={ goToCodeLink }>
-            <IconButton tooltip="View source code" tooltipPosition="top-right">
+            <IconButton tooltip="View source code" tooltipPosition="top-left">
               <Code color="#FFFDE7"/>
             </IconButton>
           </div>
