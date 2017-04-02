@@ -25,7 +25,6 @@ class PlayPauseButton extends React.Component {
     this.props.playingPassFunc(!this.state.playing);
   }
   render(){
-    console.log(this.state.playing)
     if (window.animationNumber === 2 || window.animationNumber == 3){
       if (this.state.playing){
         return(
