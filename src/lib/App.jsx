@@ -16,8 +16,6 @@ import '../styles/backgroundCircle.css';
 import '../styles/addFiles.css';
 import '../styles/playlistButton.css';
 import '../styles/topButtons.css';
-import '../styles/shuffle.css';
-import '../styles/replay.css';
 import '../styles/bgEqualizer.css';
 import '../styles/backgroundWaves.css';
 import '../styles/menu.css';

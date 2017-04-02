@@ -13,8 +13,6 @@ import BackGroundPic from './front/backgroundPic.jsx';
 import { AddFiles } from './front/addFiles.jsx';
 import { PlaylistButton } from './front/playlistButton.jsx';
 import Menu from './menu/menu.jsx';
-import { Shuffle } from './front/shuffle.jsx';
-import { Replay } from './front/replay.jsx';
 import BackGroundCircle from './front/backgroundCircle.jsx';
 import BackGroundEqualizer from './front/backgroundEqualizer.jsx';
 import { BackGroundWaves } from './front/backgroundWaves.jsx';
