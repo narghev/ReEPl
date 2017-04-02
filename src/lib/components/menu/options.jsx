@@ -75,6 +75,7 @@ class Options extends React.Component {
               labelStyle={styles.labelStyle}
               defaultToggled={this.props.shuffle}
               onToggle={this.toggleShuffle}
+              style={{width: 'auto'}}
             />
           </div>
           <div className="replay">
@@ -87,6 +88,7 @@ class Options extends React.Component {
               labelStyle={styles.labelStyle}
               defaultToggled={this.props.replay}
               onToggle={this.toggleReplay}
+              style={{width: 'auto'}}
             />
           </div>
         </div>
