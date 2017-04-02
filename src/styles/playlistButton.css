@@ -1,11 +1,6 @@
-.playlistButton img {
-  width: 4vw;
-  height: 5vh;
-}
-
 .playlistButton {
-  width: 4vw;
-  height: 5vh;
+  width: 35px;
+  height: 35px;
   margin-top: 1.5vh;
   margin-left: 1.0vw;
 }
