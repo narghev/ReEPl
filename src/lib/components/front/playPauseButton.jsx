@@ -48,7 +48,7 @@ class PlayPauseButton extends React.Component {
       return(
         <div onClick={ this.clickHandler } className="playPauseButton">
           <MuiThemeProvider>
-            <PauseButton color="#FFFDE7" style={{ width: "50px", height: "50px" }} />
+            <PauseButton color="#F58E00" style={{ width: "50px", height: "50px", filter: `hue-rotate(${this.props.filterDeg}deg)` }} />
           </MuiThemeProvider>
         </div>
       )
@@ -56,7 +56,7 @@ class PlayPauseButton extends React.Component {
     return(
       <div onClick={ this.clickHandler } className="playPauseButton">
         <MuiThemeProvider>
-          <PlayButton color="#FFFDE7" style={{ width: "50px", height: "50px" }} />
+          <PlayButton color="#F58E00" style={{ width: "50px", height: "50px", filter: `hue-rotate(${this.props.filterDeg}deg)` }} />
         </MuiThemeProvider>
       </div>
     )
