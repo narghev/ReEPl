@@ -53,6 +53,7 @@ class Options extends React.Component {
               trackSwitchedStyle={styles.trackSwitched}
               labelStyle={styles.labelStyle}
               defaultToggled={this.props.shuffle}
+              onToggle={this.props.toggleShuffle}
             />
           </div>
           <div className="replay">
@@ -64,6 +65,7 @@ class Options extends React.Component {
               trackSwitchedStyle={styles.trackSwitched}
               labelStyle={styles.labelStyle}
               defaultToggled={this.props.replay}
+              onToggle={this.props.toggleReplay}
             />
           </div>
         </div>

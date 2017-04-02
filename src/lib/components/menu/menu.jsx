@@ -48,6 +48,8 @@ class Menu extends React.Component {
                  changeAnimation= { this.props.changeAnimation }
                  shuffle = { this.props.shuffle }
                  replay = { this.props.replay }
+                 toggleShuffle = { this.props.toggleShuffle }
+                 toggleReplay = { this.props.toggleReplay }
                />
              </Tab>
            </Tabs>

@@ -244,24 +244,20 @@ class FrontComps extends React.Component {
             }
             shuffle = { this.state.shuffle }
             replay = { this.state.replay }
+            toggleShuffle = { ()=>{
+              let shuffleBool = this.state.shuffle;
+              this.setState({shuffle: !shuffleBool});
+            }}
+            toggleReplay = { ()=>{
+              let replayBool = this.state.replay;
+              this.setState({replay: !replayBool});
+            }}
         />
         <div className="topButtons">
           <PlaylistButton clickHandler={()=>{
               const nextShowPlaylistVal = !this.state.showMenu;
               this.setState({showMenu: nextShowPlaylistVal});
             }}/>
-          <Replay show={this.state.showMenu} replay={ this.state.replay } clickHandler={ ()=>{
-            let replayBool = this.state.replay;
-            this.setState({replay: !replayBool});
-          } }
-            filterDeg={ this.globalFilterDig }
-          />
-          <Shuffle show={this.state.showMenu} shuffle={ this.state.shuffle } clickHandler={ ()=>{
-            let shuffleBool = this.state.shuffle;
-            this.setState({shuffle: !shuffleBool});
-          } }
-            filterDeg={ this.globalFilterDig }
-          />
           <div className="addFilesDiv">
             <AddFiles filePassFunc={(playlist)=>{
               let updateAudioBool = false;
