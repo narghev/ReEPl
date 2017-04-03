@@ -3,6 +3,7 @@ import SwipeableViews from 'react-swipeable-views';
 import Playlist from '../playlist/playlist.jsx';
 import Options from './options.jsx';
 import Equalizer from './equalizer.jsx';
+import Snackbars from './snackbars.jsx';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -16,7 +17,8 @@ class Menu extends React.Component {
     super();
     this.state = {
       show: false,
-      slideIndex: 0
+      slideIndex: 0,
+      eqSnackbar: false
     };
   }
 
@@ -70,9 +72,14 @@ class Menu extends React.Component {
               />
             </div>
             <div>
-              <Equalizer />
+              <Equalizer snackChange={(state)=>{this.setState({eqSnackbar: true, eqBool: state})}} />
             </div>
           </SwipeableViews>
+          <Snackbars
+            eq={this.state.eqSnackbar}
+            eqBool={this.state.eqBool}
+            closeEq={()=>{this.setState({eqSnackbar: false})}}
+          />
        </div>
      )
   }

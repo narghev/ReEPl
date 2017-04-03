@@ -41,6 +41,7 @@ class Equilizer extends React.Component {
 
   toggleEq = () => {
     const onBool = this.state.on;
+    this.props.snackChange(!onBool);
     this.setState({on: !onBool});
   }
 
