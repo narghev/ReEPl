@@ -58,11 +58,11 @@ const initEqualizer = () =>{
   hGain.connect(sum);
 }
 
-const connectEquilizer = () => {
+const connectEqualizer = () => {
   sum.connect(context.destination);
 }
 
-const disconnectEquilizer = () => {
+const disconnectEqualizer = () => {
   sum.disconnect(context.destination);
 }
 

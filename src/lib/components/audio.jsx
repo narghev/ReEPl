@@ -34,6 +34,7 @@ class Audio extends React.Component {
   }
   componentDidMount(){
     initAnalyser();
+    initEqualizer();
   }
   render(){
     return(

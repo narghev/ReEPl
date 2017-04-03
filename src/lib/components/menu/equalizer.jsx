@@ -40,9 +40,13 @@ class Equilizer extends React.Component {
   }
 
   toggleEq = () => {
-    const onBool = this.state.on;
-    this.props.snackChange(!onBool);
-    this.setState({on: !onBool});
+    const bool = !this.state.on;
+    if (bool)
+      connectEqualizer();
+    else
+      disconnectEqualizer();
+    this.props.snackChange(bool);
+    this.setState({on: bool});
   }
 
   render(){
