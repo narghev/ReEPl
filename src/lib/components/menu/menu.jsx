@@ -1,6 +1,7 @@
 import React from 'react';
 import Playlist from '../playlist/playlist.jsx';
 import Options from './options.jsx';
+import Equilizer from './equilizer.jsx';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';

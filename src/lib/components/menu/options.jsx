@@ -4,6 +4,7 @@ import Code from 'material-ui/svg-icons/action/code';
 import Toggle from 'material-ui/Toggle';
 import { goToCodeLink } from '../../../scripts/links.js';
 import Snackbar from 'material-ui/Snackbar';
+import RaisedButton from 'material-ui/RaisedButton';
 
 const styles = {
   block: {
@@ -91,6 +92,9 @@ class Options extends React.Component {
               style={{width: 'auto'}}
             />
           </div>
+        </div>
+        <div>
+          <RaisedButton label="Default" onClick={ this.props.openEq }/>
         </div>
         <div className="footer">
           <div onClick={ goToCodeLink }>
