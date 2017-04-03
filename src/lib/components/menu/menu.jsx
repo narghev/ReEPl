@@ -50,21 +50,27 @@ class Menu extends React.Component {
             onChangeIndex={this.handleChange}
           >
             <div>
-            <Playlist
-              playlist={ this.props.playlist }
-              clickHandler={ this.props.clickHandler }
-              deleteClickHandler={ this.props.deleteClickHandler }
-            />
+              <Playlist
+                playlist={ this.props.playlist }
+                clickHandler={ this.props.clickHandler }
+                deleteClickHandler={ this.props.deleteClickHandler }
+              />
             </div>
             <div>
-            <Options
-              clearPlaylistClickHandler= { this.props.clearPlaylistClickHandler }
-              changeAnimation= { this.props.changeAnimation }
-              shuffle = { this.props.shuffle }
-              replay = { this.props.replay }
-              toggleShuffle = { this.props.toggleShuffle }
-              toggleReplay = { this.props.toggleReplay }
-            />
+              <Options
+                clearPlaylistClickHandler= { this.props.clearPlaylistClickHandler }
+                changeAnimation= { this.props.changeAnimation }
+                shuffle = { this.props.shuffle }
+                replay = { this.props.replay }
+                toggleShuffle = { this.props.toggleShuffle }
+                toggleReplay = { this.props.toggleReplay }
+                openEq = {()=>{
+                  this.setState({slideIndex: 2});
+                }}
+              />
+            </div>
+            <div>
+              <Equilizer />
             </div>
           </SwipeableViews>
        </div>
