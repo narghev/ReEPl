@@ -114,20 +114,6 @@ class Options extends React.Component {
             </IconButton>
           </div>
         </div>
-        <Snackbar
-          open={this.state.shuffleBarShow}
-          message={`Shuffle Toggled ${this.props.shuffle ? 'On' : 'Off'}`}
-          autoHideDuration={3000}
-          onRequestClose={()=>{this.setState({shuffleBarShow: false})}}
-          contentStyle={{color: '#FFFDE7'}}
-        />
-        <Snackbar
-          open={this.state.replayBarShow}
-          message={`Replay Toggled ${this.props.replay ? 'On' : 'Off'}`}
-          autoHideDuration={3000}
-          onRequestClose={()=>{this.setState({replayBarShow: false})}}
-          contentStyle={{color: '#FFFDE7'}}
-        />
       </div>
     )
   }

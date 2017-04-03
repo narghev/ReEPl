@@ -18,8 +18,17 @@ class Menu extends React.Component {
     this.state = {
       show: false,
       slideIndex: 0,
-      eqSnackbar: false
+      eqSnackbar: false,
+      shuffleSnackbar: false,
+      replaySnackbar: false
     };
+  }
+
+  componentWillReceiveProps(nextProps){
+    this.setState({
+      shuffle: nextProps.shuffle,
+      replay: nextProps.replay
+    });
   }
 
   handleChange = (value) => {
@@ -64,8 +73,14 @@ class Menu extends React.Component {
                 changeAnimation= { this.props.changeAnimation }
                 shuffle = { this.props.shuffle }
                 replay = { this.props.replay }
-                toggleShuffle = { this.props.toggleShuffle }
-                toggleReplay = { this.props.toggleReplay }
+                toggleShuffle = {()=>{
+                  this.props.toggleShuffle();
+                  this.setState({shuffleSnackbar: true});
+                }}
+                toggleReplay = {()=>{
+                  this.props.toggleReplay();
+                  this.setState({replaySnackbar: true});
+                }}
                 openEq = {()=>{
                   this.setState({slideIndex: 2});
                 }}
@@ -79,6 +94,12 @@ class Menu extends React.Component {
             eq={this.state.eqSnackbar}
             eqBool={this.state.eqBool}
             closeEq={()=>{this.setState({eqSnackbar: false})}}
+            shuffle={this.state.shuffleSnackbar}
+            shuffleBool={this.state.shuffle}
+            closeShuffle={()=>{this.setState({shuffleSnackbar: false})}}
+            replay={this.state.replaySnackbar}
+            replayBool={this.state.replay}
+            closeReplay={()=>{this.setState({replaySnackbar: false})}}
           />
        </div>
      )

@@ -11,6 +11,21 @@ class Snackbars extends React.Component {
           message={`Equalizer ${this.props.eqBool ? 'Enabled' : 'Disabled'}`}
           autoHideDuration={3000}
           onRequestClose={this.props.closeEq}
+          contentStyle={{color: '#FFFDE7'}}
+        />
+        <Snackbar
+          open={this.props.shuffle}
+          message={`Shuffle Toggled ${this.props.shuffleBool ? 'On' : 'Off'}`}
+          autoHideDuration={3000}
+          onRequestClose={this.props.closeShuffle}
+          contentStyle={{color: '#FFFDE7'}}
+        />
+        <Snackbar
+          open={this.props.replay}
+          message={`Replay Toggled ${this.props.replayBool ? 'On' : 'Off'}`}
+          autoHideDuration={3000}
+          onRequestClose={this.props.closeReplay}
+          contentStyle={{color: '#FFFDE7'}}
         />
       </div>
     )
