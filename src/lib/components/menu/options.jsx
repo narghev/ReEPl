@@ -94,7 +94,18 @@ class Options extends React.Component {
           </div>
         </div>
         <div>
-          <RaisedButton label="Default" onClick={ this.props.openEq }/>
+          <RaisedButton
+            backgroundColor="#f8c042"
+            label="Equalizer"
+            onClick={ this.props.openEq }
+            style={{
+              marginLeft: '7%',
+              marginTop: '3%'
+            }}
+            labelStyle={{
+              textTransform: 'none'
+            }}
+          />
         </div>
         <div className="footer">
           <div onClick={ goToCodeLink }>

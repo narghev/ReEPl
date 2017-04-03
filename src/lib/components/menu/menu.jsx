@@ -2,7 +2,7 @@ import React from 'react';
 import SwipeableViews from 'react-swipeable-views';
 import Playlist from '../playlist/playlist.jsx';
 import Options from './options.jsx';
-import Equilizer from './equilizer.jsx';
+import Equalizer from './equalizer.jsx';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -70,7 +70,7 @@ class Menu extends React.Component {
               />
             </div>
             <div>
-              <Equilizer />
+              <Equalizer />
             </div>
           </SwipeableViews>
        </div>
