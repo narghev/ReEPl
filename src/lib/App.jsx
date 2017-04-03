@@ -10,6 +10,10 @@ const muiTheme = getMuiTheme({
     },
     inkBar: {
         backgroundColor: '#F8BD42'
+    },
+    slider: {
+      trackColor: '#D50000',
+      selectionColor: '#F8BD42'
     }
 });
 

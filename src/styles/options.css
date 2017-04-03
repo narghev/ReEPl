@@ -55,3 +55,12 @@
 .shuffle {
   margin-bottom: 2%;
 }
+
+.eqSliders {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 50%;
+  margin: auto;
+  margin-top: 7%;
+}

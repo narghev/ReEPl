@@ -1,5 +1,6 @@
 import React from 'react';
 import Toggle from 'material-ui/Toggle';
+import Slider from 'material-ui/Slider';
 
 const styles = {
   block: {
@@ -63,6 +64,11 @@ class Equilizer extends React.Component {
           defaultToggled={this.state.on}
           onToggle={this.toggleEq}
         />
+        <div className="eqSliders">
+          <Slider disabled={!this.state.on} style={{height: 200}} axis="y" defaultValue={0.5} />
+          <Slider disabled={!this.state.on} style={{height: 200}} axis="y" defaultValue={0.5} />
+          <Slider disabled={!this.state.on} style={{height: 200}} axis="y" defaultValue={0.5} />
+        </div>
       </div>
     )
   }
