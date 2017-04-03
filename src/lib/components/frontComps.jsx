@@ -16,6 +16,7 @@ import Menu from './menu/menu.jsx';
 import BackGroundCircle from './front/backgroundCircle.jsx';
 import BackGroundEqualizer from './front/backgroundEqualizer.jsx';
 import { BackGroundWaves } from './front/backgroundWaves.jsx';
+import { saveOptions, getOptions } from '../../scripts/options.js';
 
 export default
 class FrontComps extends React.Component {
@@ -82,24 +83,28 @@ class FrontComps extends React.Component {
         return;
       }
       let files = pl;
-      setTimeout(()=>{
-        this.setState({
-          loadStatus: 'ready',
-          playlist: files,
-          playing: !!files[0],
-          duration: 0,
-          currentTime: 0,
-          trackName: files[0] ? files[0].name : "",
-          nowPlaying: 0,
-          showMenu: false,
-          updateAudio: true,
-          shuffle: false,
-          replay: false,
-          animationNumber: window.animationNumber
-        });
-        this.setState({playing: true});
-      }, 500);
-      })
+      this.setState({
+        loadStatus: 'ready',
+        playlist: files,
+        playing: !!files[0],
+        duration: 0,
+        currentTime: 0,
+        trackName: files[0] ? files[0].name : "",
+        nowPlaying: 0,
+        showMenu: false,
+        updateAudio: true,
+        shuffle: false,
+        replay: false,
+        animationNumber: window.animationNumber
+      });
+    });
+    getOptions().then((opts)=>{
+      if (opts.shuffle === undefined || opts.replay === undefined){
+        saveOptions([false, false]);
+        return;
+      }
+      this.setState({shuffle: opts.shuffle, replay: opts.replay});
+    });
   }
   render(){
     if (this.state.loadStatus === 'loading'){
@@ -244,10 +249,12 @@ class FrontComps extends React.Component {
             replay = { this.state.replay }
             toggleShuffle = { ()=>{
               let shuffleBool = this.state.shuffle;
+              saveOptions([!shuffleBool, this.state.replay]);
               this.setState({shuffle: !shuffleBool});
             }}
             toggleReplay = { ()=>{
               let replayBool = this.state.replay;
+              saveOptions([this.state.replay, !replayBool]);
               this.setState({replay: !replayBool});
             }}
         />
