@@ -55,6 +55,7 @@ class Menu extends React.Component {
            >
              <Tab label = "Playlist" value={0} />
              <Tab label = "Options" value={1} />
+             <Tab label = "Equalizer" value={2} />
           </Tabs>
           <SwipeableViews
             index={this.state.slideIndex}
