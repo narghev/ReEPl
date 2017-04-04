@@ -6,7 +6,7 @@
   width: 100vw;
   background-color: rgb(30, 30, 30);
   opacity: 1;
-  z-index: 2;
+  z-index: 501;
   transition: left 0.5s;
   overflow-y: hidden;
   overflow-x: hidden;

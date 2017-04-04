@@ -2,6 +2,7 @@
   width: 100vw;
   height: 5px;
   margin-bottom: 3vh;
+  z-index: 500;
 }
 
 #trackTimeBg {
