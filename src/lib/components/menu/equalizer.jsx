@@ -40,6 +40,18 @@ class Equilizer extends React.Component {
     }
   }
 
+  slideHandlerLow = (_, val) => {
+    changeGain(val, 'lowGain');
+  }
+
+  slideHandlerMid = (_, val) => {
+    changeGain(val, 'midGain');
+  }
+
+  slideHandlerHigh = (_, val) => {
+    changeGain(val, 'highGain');
+  }
+
   toggleEq = () => {
     const bool = !this.state.on;
     if (bool)
@@ -65,9 +77,36 @@ class Equilizer extends React.Component {
           onToggle={this.toggleEq}
         />
         <div className="eqSliders">
-          <Slider disabled={!this.state.on} style={{height: 200}} axis="y" defaultValue={0.5} />
-          <Slider disabled={!this.state.on} style={{height: 200}} axis="y" defaultValue={0.5} />
-          <Slider disabled={!this.state.on} style={{height: 200}} axis="y" defaultValue={0.5} />
+          <Slider
+            onChange={this.slideHandlerLow}
+            disabled={!this.state.on}
+            style={{height: 200}}
+            axis="y"
+            defaultValue={0}
+            min={-100}
+            max={100}
+            step={1}
+          />
+          <Slider
+            onChange={this.slideHandlerMid}
+            disabled={!this.state.on}
+            style={{height: 200}}
+            axis="y"
+            defaultValue={0}
+            min={-100}
+            max={100}
+            step={1}
+          />
+          <Slider
+            onChange={this.slideHandlerHigh}
+            disabled={!this.state.on}
+            style={{height: 200}}
+            axis="y"
+            defaultValue={0}
+            min={-100}
+            max={100}
+            step={1}
+          />
         </div>
       </div>
     )
