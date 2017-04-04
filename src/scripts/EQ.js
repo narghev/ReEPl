@@ -9,7 +9,6 @@ const saveEQ = (data) => {
 const getEq = () => {
   return new Promise((resolve, reject)=>{
     storage.get('equalizer', (err, data) => {
-      console.log(data)
       if (err)
         console.log(err);
       if (data.low === undefined || data.mid === undefined || data.high === undefined){
