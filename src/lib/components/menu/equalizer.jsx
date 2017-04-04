@@ -34,6 +34,7 @@ const styles = {
 
 export default
 class Equilizer extends React.Component {
+
   constructor(){
     super();
     this.state = {
@@ -78,6 +79,27 @@ class Equilizer extends React.Component {
     changeGain(0, 'lowGain');
     changeGain(0, 'midGain');
     changeGain(0, 'highGain');
+  }
+
+  save = () => {
+    saveEQ([
+      this.state.low,
+      this.state.mid,
+      this.state.high
+    ]);
+  }
+
+  componentWillMount(){
+    getEq().then((presets)=>{
+      this.setState({
+        low: presets.low,
+        mid: presets.mid,
+        high: presets.high
+      });
+      changeGain(presets.low, 'lowGain');
+      changeGain(presets.mid, 'midGain');
+      changeGain(presets.high, 'highGain');
+    });
   }
 
   render(){
@@ -135,6 +157,17 @@ class Equilizer extends React.Component {
             hoverColor="#D50000"
             label="Default"
             onClick={ this.toDefault }
+            labelStyle={{
+              textTransform: 'none',
+              color: '#FFFDE7',
+              textSize: '15px'
+            }}
+          />
+          <FlatButton
+            disabled={!this.state.on}
+            hoverColor="#f8c042"
+            label="Save Presets"
+            onClick={ this.save }
             labelStyle={{
               textTransform: 'none',
               color: '#FFFDE7',
