@@ -56,6 +56,10 @@ const initEqualizer = () =>{
   lGain.connect(sum);
   mGain.connect(sum);
   hGain.connect(sum);
+
+  lGain.gain.value = 0;
+  mGain.gain.value = 0;
+  hGain.gain.value = 0;
 }
 
 const connectEqualizer = () => {

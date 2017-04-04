@@ -1,6 +1,7 @@
 import React from 'react';
 import Toggle from 'material-ui/Toggle';
 import Slider from 'material-ui/Slider';
+import FlatButton from 'material-ui/FlatButton';
 
 const styles = {
   block: {
@@ -36,20 +37,26 @@ class Equilizer extends React.Component {
   constructor(){
     super();
     this.state = {
-      on: false
+      on: false,
+      low: 0,
+      mid: 0,
+      high: 0
     }
   }
 
   slideHandlerLow = (_, val) => {
     changeGain(val, 'lowGain');
+    this.setState({low: val});
   }
 
   slideHandlerMid = (_, val) => {
     changeGain(val, 'midGain');
+    this.setState({mid: val});
   }
 
   slideHandlerHigh = (_, val) => {
     changeGain(val, 'highGain');
+    this.setState({high: val});
   }
 
   toggleEq = () => {
@@ -60,6 +67,17 @@ class Equilizer extends React.Component {
       disconnectEqualizer();
     this.props.snackChange(bool);
     this.setState({on: bool});
+  }
+
+  toDefault = () => {
+    this.setState({
+      low: 0,
+      mid: 0,
+      high: 0
+    });
+    changeGain(0, 'lowGain');
+    changeGain(0, 'midGain');
+    changeGain(0, 'highGain');
   }
 
   render(){
@@ -82,7 +100,8 @@ class Equilizer extends React.Component {
             disabled={!this.state.on}
             style={{height: 200}}
             axis="y"
-            defaultValue={0}
+            defaultValue={this.state.low}
+            value={this.state.low}
             min={-100}
             max={100}
             step={1}
@@ -92,7 +111,8 @@ class Equilizer extends React.Component {
             disabled={!this.state.on}
             style={{height: 200}}
             axis="y"
-            defaultValue={0}
+            defaultValue={this.state.mid}
+            value={this.state.mid}
             min={-100}
             max={100}
             step={1}
@@ -102,10 +122,24 @@ class Equilizer extends React.Component {
             disabled={!this.state.on}
             style={{height: 200}}
             axis="y"
-            defaultValue={0}
+            defaultValue={this.state.high}
+            value={this.state.high}
             min={-100}
             max={100}
             step={1}
+          />
+        </div>
+        <div className="eqButtons">
+          <FlatButton
+            disabled={!this.state.on}
+            hoverColor="#D50000"
+            label="Default"
+            onClick={ this.toDefault }
+            labelStyle={{
+              textTransform: 'none',
+              color: '#FFFDE7',
+              textSize: '15px'
+            }}
           />
         </div>
       </div>
