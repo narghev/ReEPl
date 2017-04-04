@@ -14,6 +14,10 @@ export const getOptions = () => {
     storage.get('options', (err, data) => {
       if (err)
         console.log(err);
+      if (data.shuffle === undefined || data.replay === undefined){
+        resolve([false, false]);
+        return;
+      }
       resolve(data);
     });
   });
