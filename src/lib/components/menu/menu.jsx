@@ -54,7 +54,7 @@ class Menu extends React.Component {
            value={this.state.slideIndex}
            >
              <Tab label = "Playlist" value={0} />
-             <Tab label = "Options" value={1} />
+             <Tab label = "Settings" value={1} />
              <Tab label = "Equalizer" value={2} />
           </Tabs>
           <SwipeableViews
