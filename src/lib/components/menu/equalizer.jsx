@@ -40,7 +40,9 @@ class Equilizer extends React.Component {
     this.state = {
       on: false,
       low: 0,
+      lowMid: 0,
       mid: 0,
+      highMid: 0,
       high: 0
     }
   }
@@ -50,9 +52,19 @@ class Equilizer extends React.Component {
     this.setState({low: val});
   }
 
+  slideHandlerLowMid = (_, val) => {
+    changeGain(val, 'lowMidGain');
+    this.setState({lowMid: val});
+  }
+
   slideHandlerMid = (_, val) => {
     changeGain(val, 'midGain');
     this.setState({mid: val});
+  }
+
+  slideHandlerHighMid = (_, val) => {
+    changeGain(val, 'highMidGain');
+    this.setState({highMid: val});
   }
 
   slideHandlerHigh = (_, val) => {
@@ -129,12 +141,34 @@ class Equilizer extends React.Component {
             step={1}
           />
           <Slider
+            onChange={this.slideHandlerLowMid}
+            disabled={!this.state.on}
+            style={{height: 200}}
+            axis="y"
+            defaultValue={this.state.lowMid}
+            value={this.state.lowMid}
+            min={-100}
+            max={100}
+            step={1}
+          />
+          <Slider
             onChange={this.slideHandlerMid}
             disabled={!this.state.on}
             style={{height: 200}}
             axis="y"
             defaultValue={this.state.mid}
             value={this.state.mid}
+            min={-100}
+            max={100}
+            step={1}
+          />
+          <Slider
+            onChange={this.slideHandlerHighMid}
+            disabled={!this.state.on}
+            style={{height: 200}}
+            axis="y"
+            defaultValue={this.state.highMid}
+            value={this.state.highMid}
             min={-100}
             max={100}
             step={1}
