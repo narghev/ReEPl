@@ -128,7 +128,7 @@ class Equilizer extends React.Component {
     return(
       <div>
         <Toggle
-          label={`${this.state.on ? 'Disable' : 'Enable'} the Equalizer`}
+          label={`${this.state.on ? 'Deactivate ' : 'Activate'} the Equalizer`}
           style={styles.block}
           thumbStyle={styles.thumbOff}
           trackStyle={styles.trackOff}

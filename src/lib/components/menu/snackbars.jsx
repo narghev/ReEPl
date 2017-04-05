@@ -8,7 +8,7 @@ class Snackbars extends React.Component {
       <div>
         <Snackbar
           open={this.props.eq}
-          message={`Equalizer ${this.props.eqBool ? 'Enabled' : 'Disabled'}`}
+          message={`Equalizer ${this.props.eqBool ? 'Active' : 'Deactive'}`}
           autoHideDuration={3000}
           onRequestClose={this.props.closeEq}
           contentStyle={{color: '#FFFDE7'}}
