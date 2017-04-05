@@ -106,76 +106,139 @@ const disconnectEqualizer = () => {
   sum.disconnect(context.destination);
 }
 
-const bassBooster = () => {
+const bassBooster = (that) => {
   changeGain(50, 'lowGain');
   changeGain(35, 'lowMidGain');
   changeGain(10, 'midGain');
   changeGain(0, 'highMidGain');
   changeGain(0, 'highGain');
+  that.setState({
+    low: 50,
+    lowMid: 35,
+    mid: 10,
+    highMid: 0,
+    high: 0
+  });
 }
 
-const classical = () => {
+const classical = (that) => {
   changeGain(15, 'lowGain');
   changeGain(-10, 'lowMidGain');
   changeGain(-15, 'midGain');
   changeGain(10, 'highMidGain');
   changeGain(15, 'highGain');
+  that.setState({
+    low: 15,
+    lowMid: -10,
+    mid: -15,
+    highMid: 10,
+    high: 15
+  });
 }
 
-const electronic = () => {
+const electronic = (that) => {
   changeGain(5, 'lowGain');
   changeGain(-10, 'lowMidGain');
   changeGain(10, 'midGain');
   changeGain(5, 'highMidGain');
   changeGain(30, 'highGain');
+  that.setState({
+    low: 5,
+    lowMid: -10,
+    mid: 10,
+    highMid: 5,
+    high: 30
+  });
 }
 
-const hipHop = () => {
+const hipHop = (that) => {
   changeGain(5, 'lowGain');
   changeGain(-5, 'lowMidGain');
   changeGain(-10, 'midGain');
   changeGain(0, 'highMidGain');
   changeGain(12, 'highGain');
+  that.setState({
+    low: 5,
+    lowMid: -5,
+    mid: -10,
+    highMid: 0,
+    high: 12
+  });
 }
 
-const loud = () => {
+const loud = (that) => {
   changeGain(0, 'lowGain');
   changeGain(-5, 'lowMidGain');
   changeGain(0, 'midGain');
   changeGain(-45, 'highMidGain');
   changeGain(45, 'highGain');
+  that.setState({
+    low: 0,
+    lowMid: -5,
+    mid: 0,
+    highMid: -45,
+    high: 45
+  });
 }
 
-const jazz = () => {
+const jazz = (that) => {
   changeGain(5, 'lowGain');
   changeGain(-3, 'lowMidGain');
   changeGain(-10, 'midGain');
   changeGain(5, 'highMidGain');
   changeGain(25, 'highGain');
+  that.setState({
+    low: 5,
+    lowMid: -3,
+    mid: -10,
+    highMid: 5,
+    high: 25
+  });
 }
 
-const pop = () => {
+const pop = (that) => {
   changeGain(-5, 'lowGain');
   changeGain(15, 'lowMidGain');
   changeGain(20, 'midGain');
   changeGain(5, 'highMidGain');
   changeGain(-15, 'highGain');
+  that.setState({
+    low: -5,
+    lowMid: 15,
+    mid: 20,
+    highMid: 5,
+    high: -15
+  });
 }
 
-const rAndB = () => {
+const rAndB = (that) => {
   changeGain(50, 'lowGain');
   changeGain(-10, 'lowMidGain');
   changeGain(-3, 'midGain');
   changeGain(10, 'highMidGain');
   changeGain(15, 'highGain');
+  that.setState({
+    low: 50,
+    lowMid: -10,
+    mid: -3,
+    highMid: 10,
+    high: 15
+  });
 }
 
-const rock = () => {
+const rock = (that) => {
   changeGain(25, 'lowGain');
   changeGain(-3, 'lowMidGain');
   changeGain(-17, 'midGain');
   changeGain(22, 'highMidGain');
   changeGain(40, 'highGain');
+  that.setState({
+    low: 25,
+    lowMid: -3,
+    mid: -17,
+    highMid: 22,
+    high: 40
+  });
 }
 
 const changeGain = (string,type) => {
