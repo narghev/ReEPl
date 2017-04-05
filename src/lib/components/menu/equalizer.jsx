@@ -100,7 +100,9 @@ class Equilizer extends React.Component {
   save = () => {
     saveEQ([
       this.state.low,
+      this.state.lowMid,
       this.state.mid,
+      this.state.highMid,
       this.state.high
     ]);
   }
@@ -109,11 +111,15 @@ class Equilizer extends React.Component {
     getEq().then((presets)=>{
       this.setState({
         low: presets.low,
+        lowMid: presets.lowMid,
         mid: presets.mid,
+        highMid: presets.highMid,
         high: presets.high
       });
       changeGain(presets.low, 'lowGain');
+      changeGain(presets.lowMid, 'lowMidGain');
       changeGain(presets.mid, 'midGain');
+      changeGain(presets.highMid, 'highMidGain');
       changeGain(presets.high, 'highGain');
     });
   }
