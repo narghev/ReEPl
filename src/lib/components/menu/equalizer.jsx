@@ -85,11 +85,15 @@ class Equilizer extends React.Component {
   toDefault = () => {
     this.setState({
       low: 0,
+      lowMid: 0,
       mid: 0,
+      highMid: 0,
       high: 0
     });
     changeGain(0, 'lowGain');
+    changeGain(0, 'lowMidGain');
     changeGain(0, 'midGain');
+    changeGain(0, 'highMidGain');
     changeGain(0, 'highGain');
   }
 
