@@ -105,6 +105,10 @@ class FrontComps extends React.Component {
       }
       this.setState({shuffle: opts.shuffle, replay: opts.replay});
     });
+    getAnimationNumber().then((num)=>{
+      window.animationNumber = num;
+      this.setState({animationNumber: window.animationNumber});
+    });
   }
   render(){
     if (this.state.loadStatus === 'loading'){
@@ -242,6 +246,7 @@ class FrontComps extends React.Component {
               ()=>{
                 let nextAnimation = (this.state.animationNumber+1)%(this.animations);
                 window.animationNumber = nextAnimation;
+                saveAnimationNumber(nextAnimation);
                 this.setState({animationNumber: nextAnimation, showMenu: false});
               }
             }
