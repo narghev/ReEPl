@@ -106,6 +106,78 @@ const disconnectEqualizer = () => {
   sum.disconnect(context.destination);
 }
 
+const bassBooster = () => {
+  changeGain(50, 'lowGain');
+  changeGain(35, 'lowMidGain');
+  changeGain(10, 'midGain');
+  changeGain(0, 'highMidGain');
+  changeGain(0, 'highGain');
+}
+
+const classical = () => {
+  changeGain(15, 'lowGain');
+  changeGain(-10, 'lowMidGain');
+  changeGain(-15, 'midGain');
+  changeGain(10, 'highMidGain');
+  changeGain(15, 'highGain');
+}
+
+const electronic = () => {
+  changeGain(5, 'lowGain');
+  changeGain(-10, 'lowMidGain');
+  changeGain(10, 'midGain');
+  changeGain(5, 'highMidGain');
+  changeGain(30, 'highGain');
+}
+
+const hipHop = () => {
+  changeGain(5, 'lowGain');
+  changeGain(-5, 'lowMidGain');
+  changeGain(-10, 'midGain');
+  changeGain(0, 'highMidGain');
+  changeGain(12, 'highGain');
+}
+
+const loud = () => {
+  changeGain(0, 'lowGain');
+  changeGain(-5, 'lowMidGain');
+  changeGain(0, 'midGain');
+  changeGain(-45, 'highMidGain');
+  changeGain(45, 'highGain');
+}
+
+const jazz = () => {
+  changeGain(5, 'lowGain');
+  changeGain(-3, 'lowMidGain');
+  changeGain(-10, 'midGain');
+  changeGain(5, 'highMidGain');
+  changeGain(25, 'highGain');
+}
+
+const pop = () => {
+  changeGain(-5, 'lowGain');
+  changeGain(15, 'lowMidGain');
+  changeGain(20, 'midGain');
+  changeGain(5, 'highMidGain');
+  changeGain(-15, 'highGain');
+}
+
+const rAndB = () => {
+  changeGain(50, 'lowGain');
+  changeGain(-10, 'lowMidGain');
+  changeGain(-3, 'midGain');
+  changeGain(10, 'highMidGain');
+  changeGain(15, 'highGain');
+}
+
+const rock = () => {
+  changeGain(25, 'lowGain');
+  changeGain(-3, 'lowMidGain');
+  changeGain(-17, 'midGain');
+  changeGain(22, 'highMidGain');
+  changeGain(40, 'highGain');
+}
+
 const changeGain = (string,type) => {
   let value = parseFloat(string) / 100.0;
 
