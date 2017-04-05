@@ -26,11 +26,11 @@ class FrontComps extends React.Component {
     let files = [];
     this.state = {
       loadStatus: 'loading',
-      playlist: files,
-      playing: !!files[0],
+      playlist: [],
+      playing: false,
       duration: 0,
       currentTime: 0,
-      trackName: files[0] ? files[0].name : "",
+      trackName: "",
       nowPlaying: 0,
       showMenu: false,
       updateAudio: true,

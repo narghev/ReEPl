@@ -39,7 +39,7 @@ class Audio extends React.Component {
   render(){
     return(
       <div>
-        <audio id="track">
+        <audio id="track" autoplay>
           <source src={this.state.url}></source>
         </audio>
       </div>
