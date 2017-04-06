@@ -23,7 +23,6 @@ class Audio extends React.Component {
     if (document.getElementById('track').children[0].attributes[0].value != ""){
       try {
         track.load();
-        track.play();
       } catch(e) {
         console.log(e);
       }
