@@ -71,6 +71,9 @@ class FrontComps extends React.Component {
           trackName: this.state.playlist[this.nextPlayingNow(this.state.nowPlaying+1, this.state.playlist.length)].name,
           updateAudio: true
         });
+        setTimeout(()=>{
+          document.getElementById("track").play();
+        }, 500);
       }
     },500);
   }
@@ -325,6 +328,9 @@ class FrontComps extends React.Component {
                     updateAudio: true,
                     playing: true
                   });
+                  setTimeout(()=>{
+                    document.getElementById("track").play();
+                  }, 500);
                 }
               }
             }/>
@@ -352,6 +358,9 @@ class FrontComps extends React.Component {
                     updateAudio: true,
                     playing: true
                   });
+                  setTimeout(()=>{
+                    document.getElementById("track").play();
+                  }, 500);
                 }
               }
             }/>
