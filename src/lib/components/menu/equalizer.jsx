@@ -216,13 +216,27 @@ class Equilizer extends React.Component {
               animation={PopoverAnimationVertical}
             >
               <Menu>
-                <MenuItem primaryText="Bass Booster" />
-                <MenuItem primaryText="Classical" />
-                <MenuItem primaryText="Loud" />
-                <MenuItem primaryText="Jazz" />
-                <MenuItem primaryText="Pop" />
-                <MenuItem primaryText="Rock" />
-                <MenuItem primaryText="Flat" />
+                <MenuItem primaryText="Bass Booster" onClick={()=>{
+                  bassBooster(this);
+                }}/>
+                <MenuItem primaryText="Classical" onClick={()=>{
+                  classical(this);
+                }}/>
+                <MenuItem primaryText="Loud" onClick={()=>{
+                  loud(this);
+                }}/>
+                <MenuItem primaryText="Jazz" onClick={()=>{
+                  jazz(this);
+                }}/>
+                <MenuItem primaryText="Pop" onClick={()=>{
+                  pop(this);
+                }}/>
+                <MenuItem primaryText="Rock" onClick={()=>{
+                  rock(this);
+                }}/>
+                <MenuItem primaryText="Flat" onClick={()=>{
+                  flat(this);
+                }}/>
               </Menu>
             </Popover>
           </div>
