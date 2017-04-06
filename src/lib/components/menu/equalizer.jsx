@@ -5,6 +5,7 @@ import FlatButton from 'material-ui/FlatButton';
 import Popover, {PopoverAnimationVertical} from 'material-ui/Popover';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
+import Badge from 'material-ui/Badge';
 
 const styles = {
   block: {
@@ -136,61 +137,106 @@ class Equilizer extends React.Component {
           onToggle={this.toggleEq}
         />
         <div className="eqSliders">
-          <Slider
-            onChange={this.slideHandlerLow}
-            disabled={!this.state.on}
-            style={{height: 200}}
-            axis="y"
-            defaultValue={this.state.low}
-            value={this.state.low}
-            min={-100}
-            max={100}
-            step={1}
-          />
-          <Slider
-            onChange={this.slideHandlerLowMid}
-            disabled={!this.state.on}
-            style={{height: 200}}
-            axis="y"
-            defaultValue={this.state.lowMid}
-            value={this.state.lowMid}
-            min={-100}
-            max={100}
-            step={1}
-          />
-          <Slider
-            onChange={this.slideHandlerMid}
-            disabled={!this.state.on}
-            style={{height: 200}}
-            axis="y"
-            defaultValue={this.state.mid}
-            value={this.state.mid}
-            min={-100}
-            max={100}
-            step={1}
-          />
-          <Slider
-            onChange={this.slideHandlerHighMid}
-            disabled={!this.state.on}
-            style={{height: 200}}
-            axis="y"
-            defaultValue={this.state.highMid}
-            value={this.state.highMid}
-            min={-100}
-            max={100}
-            step={1}
-          />
-          <Slider
-            onChange={this.slideHandlerHigh}
-            disabled={!this.state.on}
-            style={{height: 200}}
-            axis="y"
-            defaultValue={this.state.high}
-            value={this.state.high}
-            min={-100}
-            max={100}
-            step={1}
-          />
+          <Badge
+            badgeContent={this.state.low}
+            primary={true}
+            badgeStyle={{
+              backgroundColor: '#f8c042',
+              color: '#1E1E1E'
+            }}
+          >
+            <Slider
+              onChange={this.slideHandlerLow}
+              disabled={!this.state.on}
+              style={{height: 200}}
+              axis="y"
+              defaultValue={this.state.low}
+              value={this.state.low}
+              min={-100}
+              max={100}
+              step={1}
+            />
+          </Badge>
+          <Badge
+            badgeContent={this.state.lowMid}
+            primary={true}
+            badgeStyle={{
+              backgroundColor: '#f8c042',
+              color: '#1E1E1E'
+            }}
+          >
+            <Slider
+              onChange={this.slideHandlerLowMid}
+              disabled={!this.state.on}
+              style={{height: 200}}
+              axis="y"
+              defaultValue={this.state.lowMid}
+              value={this.state.lowMid}
+              min={-100}
+              max={100}
+              step={1}
+            />
+          </Badge>
+          <Badge
+            badgeContent={this.state.mid}
+            primary={true}
+            badgeStyle={{
+              backgroundColor: '#f8c042',
+              color: '#1E1E1E'
+            }}
+          >
+            <Slider
+              onChange={this.slideHandlerMid}
+              disabled={!this.state.on}
+              style={{height: 200}}
+              axis="y"
+              defaultValue={this.state.mid}
+              value={this.state.mid}
+              min={-100}
+              max={100}
+              step={1}
+            />
+          </Badge>
+          <Badge
+            badgeContent={this.state.highMid}
+            primary={true}
+            badgeStyle={{
+              backgroundColor: '#f8c042',
+              color: '#1E1E1E'
+            }}
+          >
+            <Slider
+              onChange={this.slideHandlerHighMid}
+              disabled={!this.state.on}
+              style={{height: 200}}
+              axis="y"
+              defaultValue={this.state.highMid}
+              value={this.state.highMid}
+              min={-100}
+              max={100}
+              step={1}
+            />
+          </Badge>
+          <Badge
+            badgeContent={this.state.high}
+            primary={true}
+            badgeStyle={{
+              backgroundColor: '#f8c042',
+              color: '#1E1E1E'
+            }}
+          >
+            <Slider
+              onChange={this.slideHandlerHigh}
+              disabled={!this.state.on}
+              style={{height: 200}}
+              axis="y"
+              defaultValue={this.state.high}
+              value={this.state.high}
+              min={-100}
+              max={100}
+              step={1}
+            />
+          </Badge>
         </div>
         <div className="eqButtons">
           <div>
