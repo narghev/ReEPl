@@ -218,24 +218,31 @@ class Equilizer extends React.Component {
               <Menu>
                 <MenuItem primaryText="Bass Booster" onClick={()=>{
                   bassBooster(this);
+                  this.setState({genres: false});
                 }}/>
                 <MenuItem primaryText="Classical" onClick={()=>{
                   classical(this);
+                  this.setState({genres: false});
                 }}/>
                 <MenuItem primaryText="Loud" onClick={()=>{
                   loud(this);
+                  this.setState({genres: false});
                 }}/>
                 <MenuItem primaryText="Jazz" onClick={()=>{
                   jazz(this);
+                  this.setState({genres: false});
                 }}/>
                 <MenuItem primaryText="Pop" onClick={()=>{
                   pop(this);
+                  this.setState({genres: false});
                 }}/>
                 <MenuItem primaryText="Rock" onClick={()=>{
                   rock(this);
+                  this.setState({genres: false});
                 }}/>
                 <MenuItem primaryText="Flat" onClick={()=>{
                   flat(this);
+                  this.setState({genres: false});
                 }}/>
               </Menu>
             </Popover>
