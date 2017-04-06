@@ -2,10 +2,13 @@ import React from 'react';
 import Toggle from 'material-ui/Toggle';
 import Slider from 'material-ui/Slider';
 import FlatButton from 'material-ui/FlatButton';
+import Popover, {PopoverAnimationVertical} from 'material-ui/Popover';
+import Menu from 'material-ui/Menu';
+import MenuItem from 'material-ui/MenuItem';
 
 const styles = {
   block: {
-    maxWidth: 250,
+    maxWidth: '300px',
     width: '100%',
     marginTop: '5%',
     paddingLeft: '7%',
@@ -39,6 +42,7 @@ class Equilizer extends React.Component {
     super();
     this.state = {
       on: false,
+      genres: false,
       low: 0,
       lowMid: 0,
       mid: 0,
@@ -82,20 +86,13 @@ class Equilizer extends React.Component {
     this.setState({on: bool});
   }
 
-  toDefault = () => {
+  handleTouchTap = (event) => {
+    event.preventDefault();
     this.setState({
-      low: 0,
-      lowMid: 0,
-      mid: 0,
-      highMid: 0,
-      high: 0
+      genres: true,
+      anchorEl: event.currentTarget
     });
-    changeGain(0, 'lowGain');
-    changeGain(0, 'lowMidGain');
-    changeGain(0, 'midGain');
-    changeGain(0, 'highMidGain');
-    changeGain(0, 'highGain');
-  }
+  };
 
   save = () => {
     saveEQ([
@@ -196,17 +193,39 @@ class Equilizer extends React.Component {
           />
         </div>
         <div className="eqButtons">
-          <FlatButton
-            disabled={!this.state.on}
-            hoverColor="#D50000"
-            label="Default"
-            onClick={ this.toDefault }
-            labelStyle={{
-              textTransform: 'none',
-              color: '#FFFDE7',
-              textSize: '15px'
-            }}
-          />
+          <div>
+            <FlatButton
+              disabled={!this.state.on}
+              hoverColor="#D50000"
+              label="Genres"
+              onClick={ this.handleTouchTap }
+              labelStyle={{
+                textTransform: 'none',
+                color: '#FFFDE7',
+                textSize: '15px'
+              }}
+            />
+            <Popover
+              open={this.state.genres}
+              anchorEl={this.state.anchorEl}
+              anchorOrigin={{"horizontal":"left","vertical":"bottom"}}
+              targetOrigin={{"horizontal":"left","vertical":"bottom"}}
+              onRequestClose={()=>{
+                this.setState({genres: false});
+              }}
+              animation={PopoverAnimationVertical}
+            >
+              <Menu>
+                <MenuItem primaryText="Bass Booster" />
+                <MenuItem primaryText="Classical" />
+                <MenuItem primaryText="Loud" />
+                <MenuItem primaryText="Jazz" />
+                <MenuItem primaryText="Pop" />
+                <MenuItem primaryText="Rock" />
+                <MenuItem primaryText="Flat" />
+              </Menu>
+            </Popover>
+          </div>
           <FlatButton
             disabled={!this.state.on}
             hoverColor="#f8c042"
