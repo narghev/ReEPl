@@ -86,7 +86,7 @@ class FrontComps extends React.Component {
       this.setState({
         loadStatus: 'ready',
         playlist: files,
-        playing: !!files[0],
+        playing: false,
         duration: 0,
         currentTime: 0,
         trackName: files[0] ? files[0].name : "",
@@ -122,26 +122,16 @@ class FrontComps extends React.Component {
     return(
       <div className="screen">
         <DropOnMe filePassFunc={(playlist)=>{
-          if (playlist.length != 0){
-            let updateAudioBool = false;
-            if (this.state.playlist.length === 0)
-              updateAudioBool = true;
-            let nextPlaylist = this.state.playlist;
-            for (let i=0; i < playlist.length; i++)
-              nextPlaylist.push(playlist[i]);
-            saveFile(nextPlaylist);
-            if (this.state.playlist.length === 0){
-              this.setState({playlist: nextPlaylist,
-                playing: true,
-                trackName: this.state.playlist[this.state.nowPlaying].name,
-                updateAudio: updateAudioBool});
-            }
-            else {
-              this.setState({playlist: nextPlaylist,
-                trackName: this.state.playlist[this.state.nowPlaying].name,
-                updateAudio: updateAudioBool});
-            }
-          }
+          let updateAudioBool = false;
+          if (this.state.playlist.length === 0)
+            updateAudioBool = true;
+          let nextPlaylist = this.state.playlist;
+          for (let i=0; i < playlist.length; i++)
+            nextPlaylist.push(playlist[i]);
+          saveFile(nextPlaylist);
+          this.setState({playlist: nextPlaylist,
+            trackName: this.state.playlist[this.state.nowPlaying].name,
+            updateAudio: updateAudioBool});
           }}/>
         <Audio shoulUpdate={ this.state.updateAudio } trackTimePassFunc={(duration, currentTime)=>{
               this.setState({duration: duration, currentTime: currentTime});
@@ -278,7 +268,6 @@ class FrontComps extends React.Component {
                 nextPlaylist.push(playlist[i]);
               saveFile(nextPlaylist);
               this.setState({playlist: nextPlaylist,
-                playing: true,
                 trackName: this.state.playlist[this.state.nowPlaying].name,
                 updateAudio: updateAudioBool});
               }}/>
