@@ -5,6 +5,8 @@ import Toggle from 'material-ui/Toggle';
 import { goToCodeLink } from '../../../scripts/links.js';
 import Snackbar from 'material-ui/Snackbar';
 import RaisedButton from 'material-ui/RaisedButton';
+import DropDownMenu from 'material-ui/DropDownMenu';
+import MenuItem from 'material-ui/MenuItem';
 
 const styles = {
   block: {
@@ -36,8 +38,15 @@ class Options extends React.Component {
     super();
     this.state = {
       shuffleBarShow: false,
-      replayBarShow: false
+      replayBarShow: false,
+      animationN: 0
     }
+  }
+
+  componentDidMount(){
+    getAnimationNumber().then((num)=>{
+      this.setState({animationN: num});
+    });
   }
 
   toggleReplay = () => {
@@ -57,10 +66,31 @@ class Options extends React.Component {
       <div className='options'>
         <div className="optionsTopButtons">
           <div>
-            <span onClick={ this.props.changeAnimation }>Change the background animation</span>
-            <img src="images/animationChange.svg" onClick={ this.props.changeAnimation } />
+            <DropDownMenu
+              value={this.state.animationN}
+              onChange={(_,__,n)=>{
+                this.setState({
+                  animationN: n
+                });
+                this.props.changeAnimation(n);
+              }}
+              autoWidth={true}
+              animated={true}
+              anchorOrigin={{"horizontal":"left","vertical":"bottom"}}
+              targetOrigin={{"horizontal":"left","vertical":"top"}}
+            >
+              <MenuItem value={0} primaryText="Background Picture" />
+              <MenuItem value={1} primaryText="Circle" />
+              <MenuItem value={2} primaryText="Equalizer" />
+              <MenuItem value={3} primaryText="Waves" />
+            </DropDownMenu>
           </div>
-          <div>
+          <div style={{
+            width: '24%',
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'center'
+          }}>
             <span onClick={ this.props.clearPlaylistClickHandler }>Clear the playlist</span>
             <img src="images/delete.svg" onClick={ this.props.clearPlaylistClickHandler }/>
           </div>

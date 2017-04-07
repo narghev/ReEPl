@@ -71,7 +71,9 @@ class Menu extends React.Component {
             <div>
               <Options
                 clearPlaylistClickHandler= { this.props.clearPlaylistClickHandler }
-                changeAnimation= { this.props.changeAnimation }
+                changeAnimation= {(n)=>{
+                  this.props.changeAnimation(n);
+                }}
                 shuffle = { this.props.shuffle }
                 replay = { this.props.replay }
                 toggleShuffle = {()=>{

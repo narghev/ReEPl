@@ -236,8 +236,8 @@ class FrontComps extends React.Component {
               }
             }
             changeAnimation = {
-              ()=>{
-                let nextAnimation = (this.state.animationNumber+1)%(this.animations);
+              (n)=>{
+                let nextAnimation = n;
                 window.animationNumber = nextAnimation;
                 saveAnimationNumber(nextAnimation);
                 this.setState({animationNumber: nextAnimation, showMenu: false});
