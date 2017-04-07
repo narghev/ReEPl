@@ -76,8 +76,13 @@ class Options extends React.Component {
               }}
               autoWidth={true}
               animated={true}
-              anchorOrigin={{"horizontal":"left","vertical":"bottom"}}
-              targetOrigin={{"horizontal":"left","vertical":"top"}}
+              selectedMenuItemStyle={{
+                backgroundColor: 'rgba(248, 192, 66, 0.3)',
+                color: '#071112'
+              }}
+              labelStyle={{
+                color: '#FFFDE7'
+              }}
             >
               <MenuItem value={0} primaryText="Background Picture" />
               <MenuItem value={1} primaryText="Circle" />
