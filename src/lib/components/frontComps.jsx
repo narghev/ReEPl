@@ -85,17 +85,21 @@ class FrontComps extends React.Component {
     const keyDownListener = (event) => {
       switch (event.keyCode){
         case 37:
+          //left
           track.currentTime -= 5;
           break;
         case 39:
+          //right
           track.currentTime += 5;
           break;
       }
     }
 
     const keyUpListener = (event) => {
+      console.log(event.keyCode)
       switch (event.keyCode){
         case 32:
+          //space
           const nextPlayingState = !this.state.playing;
           if (!nextPlayingState){
             document.getElementById("track").pause();
@@ -105,6 +109,43 @@ class FrontComps extends React.Component {
           }
           if (this.state.playlist.length != 0)
             this.setState({playing: nextPlayingState});
+          break;
+        case 38:
+          //up
+          if (this.state.playlist.length){
+            if (this.state.shuffle){
+              let nextPlaying = this.shuffle(this.state.playlist.length);
+              if (nextPlaying === this.state.nowPlaying)
+                nextPlaying = this.shuffle(this.state.playlist.length);
+              this.setState({nowPlaying: nextPlaying,
+                trackName: this.state.playlist[nextPlaying].name,
+                updateAudio: true,
+                playing: true
+              });
+              return;
+            }
+            this.setState({nowPlaying: this.nextPlayingNow(this.state.nowPlaying+1, this.state.playlist.length),
+              trackName: this.state.playlist[this.nextPlayingNow(this.state.nowPlaying+1, this.state.playlist.length)].name,
+              updateAudio: true,
+              playing: true
+            });
+            setTimeout(()=>{
+              document.getElementById("track").play();
+            }, 500);
+          }
+          break;
+        case 40:
+          //down
+          if (this.state.playlist.length != 0){
+            this.setState({nowPlaying: this.nextPlayingNow(this.state.nowPlaying-1, this.state.playlist.length),
+              trackName: this.state.playlist[this.nextPlayingNow(this.state.nowPlaying-1, this.state.playlist.length)].name,
+              updateAudio: true,
+              playing: true
+            });
+            setTimeout(()=>{
+              document.getElementById("track").play();
+            }, 500);
+          }
           break;
       }
     }
