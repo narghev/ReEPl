@@ -20,7 +20,8 @@ class Menu extends React.Component {
       slideIndex: 0,
       eqSnackbar: false,
       shuffleSnackbar: false,
-      replaySnackbar: false
+      replaySnackbar: false,
+      savePresetsSnackbar: false
     };
   }
 
@@ -90,7 +91,10 @@ class Menu extends React.Component {
               />
             </div>
             <div>
-              <Equalizer snackChange={(state)=>{this.setState({eqSnackbar: true, eqBool: state})}} />
+              <Equalizer
+                snackChange={(state)=>{this.setState({eqSnackbar: true, eqBool: state})}}
+                openSavePresetsSnackbar={()=>{this.setState({savePresetsSnackbar: true})}}
+              />
             </div>
           </SwipeableViews>
           <Snackbars
@@ -103,6 +107,8 @@ class Menu extends React.Component {
             replay={this.state.replaySnackbar}
             replayBool={this.state.replay}
             closeReplay={()=>{this.setState({replaySnackbar: false})}}
+            savePresets={this.state.savePresetsSnackbar}
+            closeSavePresets={()=>{this.setState({savePresetsSnackbar: false})}}
           />
        </div>
      )

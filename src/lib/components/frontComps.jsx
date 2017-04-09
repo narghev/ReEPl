@@ -96,7 +96,6 @@ class FrontComps extends React.Component {
     }
 
     const keyUpListener = (event) => {
-      console.log(event.keyCode)
       switch (event.keyCode){
         case 32:
           //space

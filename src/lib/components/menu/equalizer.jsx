@@ -103,6 +103,7 @@ class Equilizer extends React.Component {
       this.state.highMid,
       this.state.high
     ]);
+    this.props.openSavePresetsSnackbar();
   }
 
   componentWillMount(){

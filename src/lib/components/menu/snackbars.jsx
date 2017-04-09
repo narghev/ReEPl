@@ -27,6 +27,13 @@ class Snackbars extends React.Component {
           onRequestClose={this.props.closeReplay}
           contentStyle={{color: '#FFFDE7'}}
         />
+        <Snackbar
+          open={this.props.savePresets}
+          message='Presets saved'
+          autoHideDuration={3000}
+          onRequestClose={this.props.closeSavePresets}
+          contentStyle={{color: '#FFFDE7'}}
+        />
       </div>
     )
   }
