@@ -77,6 +77,27 @@ class FrontComps extends React.Component {
       }
     },500);
   }
+  componentDidMount(){
+
+    const keyUpListener = (event) => {
+      switch (event.keyCode){
+        case 32:
+          const nextPlayingState = !this.state.playing;
+          if (!nextPlayingState){
+            document.getElementById("track").pause();
+          }
+          else{
+            document.getElementById("track").play();
+          }
+          if (this.state.playlist.length != 0)
+            this.setState({playing: nextPlayingState});
+          break;
+      }
+    }
+
+    document.addEventListener('keyup', keyUpListener, false);
+    
+  }
   componentWillMount(){
     getPlaylist().then((pl)=>{
       if (!checkPlaylist(pl) || pl.length === 0){
