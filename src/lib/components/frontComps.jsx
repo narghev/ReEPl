@@ -1,3 +1,6 @@
+//global Reference of the HTML audio tag
+let track;
+
 import React from 'react';
 import PlayPauseButton from './front/playPauseButton.jsx';
 import { PrevButton } from './front/prevButton.jsx';
@@ -47,7 +50,7 @@ class FrontComps extends React.Component {
     }
     this.animations = 4;
     const onededEventInterval = setTimeout(()=>{
-      const track = document.getElementById('track');
+      track = document.getElementById('track');
       if (track === null){
         return;
       }
@@ -79,6 +82,17 @@ class FrontComps extends React.Component {
   }
   componentDidMount(){
 
+    const keyDownListener = (event) => {
+      switch (event.keyCode){
+        case 37:
+          track.currentTime -= 5;
+          break;
+        case 39:
+          track.currentTime += 5;
+          break;
+      }
+    }
+
     const keyUpListener = (event) => {
       switch (event.keyCode){
         case 32:
@@ -96,7 +110,8 @@ class FrontComps extends React.Component {
     }
 
     document.addEventListener('keyup', keyUpListener, false);
-    
+    document.addEventListener('keydown', keyDownListener, false);
+
   }
   componentWillMount(){
     getPlaylist().then((pl)=>{
